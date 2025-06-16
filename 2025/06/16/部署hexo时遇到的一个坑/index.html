@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>Hello World | Hexo</title>
-    <meta name="author" content="John Doe" />
-    <meta name="description" content="" />
+    <title>部署hexo时遇到的一个坑 | nini&#39;s Magical Journey</title>
+    <meta name="author" content="nini" />
+    <meta name="description" content="Becoming is not my concern. Leaving traces—that’s enough." />
     <meta name="keywords" content="" />
     <meta
         name="viewport"
@@ -63,7 +63,7 @@
         <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
         <a class="title" href="/">
-            <span>HEXO</span>
+            <span>NINI&#39;S MAGICAL JOURNEY</span>
         </a>
         
         <a href="/">
@@ -81,21 +81,26 @@
             <span>&ensp;Archives</span>
         </a>
         
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
+        <a href="/categories/thought-corner/">
+            <i class="fa-solid fa-lightbulb fa-fw"></i>
+            <span>&ensp;Thought Corner</span>
         </a>
         
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
+        <a href="/categories/weekly/">
+            <i class="fa-solid fa-calendar-week fa-fw"></i>
+            <span>&ensp;Weekly</span>
+        </a>
+        
+        <a href="/categories/tech-notes/">
+            <i class="fa-solid fa-calendar-week fa-fw"></i>
+            <span>&ensp;Tech Notes</span>
         </a>
         
     </nav>
     <nav id="mobile-menu">
         <div class="title" @click="showMenuItems = !showMenuItems">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;HEXO</span>
+            <span>&emsp;NINI&#39;S MAGICAL JOURNEY</span>
         </div>
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
@@ -127,21 +132,30 @@
                     </div>
                 </a>
                 
-                <a href="/categories">
+                <a href="/categories/thought-corner/">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                            <i class="fa-solid fa-lightbulb fa-fw"></i>
                         </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Thought Corner</div>
                     </div>
                 </a>
                 
-                <a href="/tags">
+                <a href="/categories/weekly/">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
+                            <i class="fa-solid fa-calendar-week fa-fw"></i>
                         </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Weekly</div>
+                    </div>
+                </a>
+                
+                <a href="/categories/tech-notes/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-calendar-week fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tech Notes</div>
                     </div>
                 </a>
                 
@@ -156,33 +170,44 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>Hello World</h1>
+        <h1>部署hexo时遇到的一个坑</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/6/10
+            2025/6/16
+        </span>
+        
+        <span class="category">
+            <a href="/categories/tech-notes/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                tech-notes
+            </a>
         </span>
         
         
     </div>
     
     <div class="content" v-pre>
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <h3 id="震惊！仅是字符间的一个小杠杠竟然花了一健全女大半天处理！"><a href="#震惊！仅是字符间的一个小杠杠竟然花了一健全女大半天处理！" class="headerlink" title="震惊！仅是字符间的一个小杠杠竟然花了一健全女大半天处理！"></a>震惊！仅是字符间的一个小杠杠竟然花了一健全女大半天处理！</h3><p><strong>被害人自述：</strong> 选好主题后我就乐呵呵去创建不同的category归档我的博文了，但没成想thought_corner这个分类一直无法显示，无论是config还是博文的开头的格式都没问题，weekly这类的都能正常显示，我ai都跑的冒火星子了也没发现哪里有问题，搞这玩意比我从0开始搞这个hexo博客花的时间还更长！！！</p>
+<p><strong>案情分析:</strong>  config和各种文件的结构设置确实没有问题，就是theme的config显示的link我找到后发现thougt_corner变成 thought-corner ,  不对劲!</p>
+<p>**调查结果：**hexo会自动把”_“转换成”-“,  这还涉及一个高端大气上档次的名词—— “Slug化”  ( slugify )</p>
+<hr>
+<h5 id="看gemini的描述："><a href="#看gemini的描述：" class="headerlink" title="看gemini的描述："></a>看gemini的描述：</h5><p>“Slug” 指的是在 URL 中使用的高度优化的、对搜索引擎友好的字符串。它的目标是让网址（比如您的分类链接）看起来更清晰、更专业、更易读，并且更容易被谷歌等搜索引擎理解。</p>
+<p>Hexo 在生成分类、标签或文章的链接时，会自动对您提供的名称（比如 <code>thought_corner</code>）进行“slug化”处理，处理规则通常包括：</p>
+<ol>
+<li>将所有字母转为小写。</li>
+<li>移除非字母和非数字的特殊符号。</li>
+<li><strong>用连字符 <code>-</code> 来替换空格和下划线 <code>_</code>。</strong></li>
+</ol>
+<p>这最后一点，正是您遇到的情况。</p>
+<p><strong>为什么要把 <code>_</code> 换成 <code>-</code>？</strong> 因为业界普遍认为，在 URL 中使用<strong>连字符 <code>-</code></strong> 作为单词分隔符（例如 <code>thought-corner</code>），比使用<strong>下划线 <code>_</code></strong>（例如 <code>thought_corner</code>）更有利于搜索引擎优化（SEO），并且可读性更好。所以，这是很多网站框架（包括 Hexo）的一个默认的最佳实践。</p>
+<hr>
+<p>好的，又学到新东西辽</p>
 
     </div>
     
@@ -198,11 +223,11 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2025 Hexo
+            2022 - 2025 nini&#39;s Magical Journey
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
-            &commat;John Doe
+            &commat;nini
         </div>
         <div>
             Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
