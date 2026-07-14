@@ -1,49 +1,279 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tech Notes | nini's Magical Journey</title>
-  <meta name="author" content="nini">
-  <meta name="description" content="电影感想、周记、技术踩坑和日常片段。把那些很小的瞬间，慢慢记下来。">
-  <link rel="icon" href="../../images/avatar.jpg">
-  <link rel="stylesheet" href="../../css/main.css">
-</head>
-<body class="">
-  <header class="site-header">
-    <div class="shell header-inner">
-      <a class="brand" href="../../index.html" aria-label="nini's Magical Journey">
-        <img src="../../images/avatar.jpg" alt="" width="40" height="40">
-        <span>nini's Magical Journey</span>
-      </a>
-      <nav class="nav" aria-label="Primary navigation">
-        <a class="" href="../../index.html">Home</a><a class="" href="../../archives/index.html">Archives</a><a class="is-active" href="../index.html" aria-current="page">Categories</a><a class="" href="../../about/index.html">About</a>
-      </nav>
+    <meta charset="utf-8" />
+    <title>Categories: tech-notes | nini&#39;s Magical Journey</title>
+    <meta name="author" content="nini" />
+    <meta name="description" content="Becoming is not my concern. Leaving traces—that’s enough." />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>NINI&#39;S MAGICAL JOURNEY</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories/thought-corner/">
+            <i class="fa-solid fa-lightbulb fa-fw"></i>
+            <span>&ensp;Thought Corner</span>
+        </a>
+        
+        <a href="/categories/weekly/">
+            <i class="fa-solid fa-calendar-week fa-fw"></i>
+            <span>&ensp;Weekly</span>
+        </a>
+        
+        <a href="/categories/tech-notes/">
+            <i class="fa-solid fa-code fa-fw"></i>
+            <span>&ensp;Tech Notes</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;NINI&#39;S MAGICAL JOURNEY</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories/thought-corner/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-lightbulb fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Thought Corner</div>
+                    </div>
+                </a>
+                
+                <a href="/categories/weekly/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-calendar-week fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Weekly</div>
+                    </div>
+                </a>
+                
+                <a href="/categories/tech-notes/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-code fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tech Notes</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div id="archives">
+    
+    <div class="categories-tags">
+        
+        
+        
+        <span>
+            <a href="/categories/weekly/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                weekly
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/categories/thought-corner/" style="background: #ff7d73">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                thought_corner
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/categories/tech-notes/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                tech-notes
+            </a>
+        </span>
+        
+        
+        
+        
     </div>
-  </header>
-  <main class="shell page">
-      <header class="page-head">
-        <p class="eyebrow">Category</p>
-        <h1>Tech Notes</h1>
-        <p>把踩过的坑写清楚，让下一次少掉一点混乱。</p>
-      </header>
-      <div class="post-list"><article class="post-row">
-    <time datetime="2025-06-16">2025-06-16</time>
-    <div class="post-row-main">
-      <h3><a href="../../2025/06/16/%E9%83%A8%E7%BD%B2hexo%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/index.html">部署hexo时遇到的一个坑</a></h3>
-      <div class="row-meta">
-        <a href="./index.html">Tech Notes</a>
-        <div class="tag-list"><a class="tag" href="../../tags/hexo/index.html">#hexo</a></div>
-      </div>
-      <p>震惊！仅是字符间的一个小杠杠竟然花了一健全女大半天处理！ 被害人自述： 选好主题后我就乐呵呵去创建不同的category归档我的博文了，但没成想thought_corner这个分类一直无法显示，无论是config还是博文的开头的格式都没问题</p>
+    
+    <div class="timeline">
+        <div class="timeline-tail"></div>
+        <div class="timeline-content">
+            <div class="item-time">2025/6/16</div>
+            <a href="/2025/06/16/%E9%83%A8%E7%BD%B2hexo%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/">
+                <h3>部署hexo时遇到的一个坑</h3>
+            </a>
+            <div class="info">
+                
+                <span class="category">
+                    <a href="/categories/tech-notes/">
+                        <span class="icon">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </span>
+                        tech-notes
+                    </a>
+                </span>
+                
+                
+                <span class="tags">
+                    <span class="icon">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </span>
+                    
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/hexo/" style="color: #00bcd4">
+                            hexo
+                        </a>
+                    </span>
+                    
+                </span>
+                
+            </div>
+        </div>
     </div>
-  </article></div>
-    </main>
-  <footer class="site-footer">
-    <div class="shell footer-inner">
-      <p>&copy; 2022 - 2026 nini's Magical Journey &middot; @nini</p>
-      <p>Notes, films, code, and ordinary days.</p>
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 nini&#39;s Magical Journey
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;nini
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
     </div>
-  </footer>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
 </body>
 </html>
