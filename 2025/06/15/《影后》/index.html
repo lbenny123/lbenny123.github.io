@@ -1,249 +1,91 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="utf-8" />
-    <title>《影后》 | nini&#39;s Magical Journey</title>
-    <meta name="author" content="nini" />
-    <meta name="description" content="Becoming is not my concern. Leaving traces—that’s enough." />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href="/images/avatar.jpg" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
-
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
-
-
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/css/main.css" />
-
-<meta name="generator" content="Hexo 7.3.0"></head>
-<body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/">
-            <span>NINI&#39;S MAGICAL JOURNEY</span>
-        </a>
-        
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/categories/thought-corner/">
-            <i class="fa-solid fa-lightbulb fa-fw"></i>
-            <span>&ensp;Thought Corner</span>
-        </a>
-        
-        <a href="/categories/weekly/">
-            <i class="fa-solid fa-calendar-week fa-fw"></i>
-            <span>&ensp;Weekly</span>
-        </a>
-        
-        <a href="/categories/tech-notes/">
-            <i class="fa-solid fa-code fa-fw"></i>
-            <span>&ensp;Tech Notes</span>
-        </a>
-        
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;NINI&#39;S MAGICAL JOURNEY</span>
-        </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/categories/thought-corner/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-lightbulb fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Thought Corner</div>
-                    </div>
-                </a>
-                
-                <a href="/categories/weekly/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-calendar-week fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Weekly</div>
-                    </div>
-                </a>
-                
-                <a href="/categories/tech-notes/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-code fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tech Notes</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
-
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div class="article">
-    <div>
-        <h1>《影后》</h1>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>《影后》 | nini's Magical Journey</title>
+  <meta name="author" content="nini">
+  <meta name="description" content="《影后》 从开学到现在拖了这么久这部剧也是看完了 ​ 开始是无意间刷到一个up主的视频，一听描述就迫不及待地找来看了，“展现演员的生活“ 这点让我毫无抵抗力 小学初中的我超级爱看电视剧，连带着超级好奇演员是啥样的，做梦都想见到自己看的剧中的">
+  <link rel="icon" href="../../../../images/avatar.jpg">
+  <link rel="stylesheet" href="../../../../css/main.css">
+</head>
+<body class="article-page">
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="../../../../index.html" aria-label="nini's Magical Journey">
+        <img src="../../../../images/avatar.jpg" alt="" width="40" height="40">
+        <span>nini's Magical Journey</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="" href="../../../../index.html">Home</a><a class="" href="../../../../archives/index.html">Archives</a><a class="" href="../../../../categories/index.html">Categories</a><a class="" href="../../../../about/index.html">About</a>
+      </nav>
     </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/6/15
-        </span>
+  </header>
+  <main class="article-shell">
+    <header class="article-head">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../../../index.html">Home</a>
+        <span>/</span>
+        <a href="../../../../categories/thought-corner/index.html">Thought Corner</a>
+      </nav>
+      <h1>《影后》</h1>
+      <p class="article-summary">《影后》 从开学到现在拖了这么久这部剧也是看完了 ​ 开始是无意间刷到一个up主的视频，一听描述就迫不及待地找来看了，“展现演员的生活“ 这点让我毫无抵抗力 小学初中的我超级爱看电视剧，连带着超级好奇演员是啥样的，做梦都想见到自己看的剧中的</p>
+      <div class="article-meta">
+        <time datetime="2025-06-15">2025-06-15</time>
+        <a href="../../../../categories/thought-corner/index.html">Thought Corner</a>
         
-        <span class="category">
-            <a href="/categories/thought-corner/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                thought_corner
-            </a>
-        </span>
-        
-        
-    </div>
-    
-    <div class="content" v-pre>
-        <p>《影后》</p>
+      </div>
+    </header>
+    <article class="article-body">
+      <p>《影后》</p>
 <p>从开学到现在拖了这么久这部剧也是看完了</p>
 <p>​    开始是无意间刷到一个up主的视频，一听描述就迫不及待地找来看了，“展现演员的生活“ 这点让我毫无抵抗力     小学初中的我超级爱看电视剧，连带着超级好奇演员是啥样的，做梦都想见到自己看的剧中的人物，想自己也能变成演员演绎一些人物的喜怒哀乐，甚至还悄悄上网搜 ”要怎么样才能变成演员“， 当然之后我知道我是必然不可能吃这碗饭的，但对于演员的生活 工作的好奇一直埋在心里，他们日收入可以抵一些人一年的工资又异常繁忙，他们的职业可以说是我能见到的收入最高的职业了，受到关注度也是最高的。有一大群粉丝爱着他们也有很多人用恶毒的语言骂他们，他们不经意的小动作被无限放大，他们被包装成没有瑕疵的完美形象。所以，演员到底是什么样的呢？这部剧也让我看得清楚了一些吧。</p>
 <p>​    这部剧让我惊喜的一点就是每一位角色都塑造得很像个人，是啊我都是为了了解这个职业了我当然不想看见的又是包装后的奇怪东西，至少我能感觉到即使在这么一个光鲜亮丽的职业下，每一个人都如普通人一般有自己的烦恼。钱能解决一切吗？之前上网冲浪时有些人讨论说哪个哪个明星好累什么的，总会有人来一句，”为什么要为你一天赚几百万的主子担心，不如担心担心你自己 “ ，诚然有些人确实是德不配位，但他们赚的这么多，真的开心吗，每一天都要以最积极的面具示人，展现自己不存在的美德，即使是工作中面对自己的同行，也要拿出矫揉造作的姿态来，就像壁虎说的：“我明明是一个很内向的人，天天要X哥X姐地这样叫这样哄着别人，这样让我自己都看不清自己了” 钱真的能抹消这一切带来的不适感吗？</p>
 <p>​    这也是我喜欢看潘茵茵这个角色的原因之一，她作吗？真的很作，很浮夸，还有公主病，周围所有人也在捧着她，但她快乐吗，她要无时不刻为自己的年龄为自己的容貌感到焦虑，她很努力很努力但还是不可避免地从巅峰下来，她爱这个职业，她爱演戏，她爱到为了演戏离婚，离开了自己喜欢的男人，但她快乐吗，她可以演戏，有热度，有这么多钱，但是总是不可避免地，有着这样那样的辛酸。</p>
 <p>—作者写到一半跑去干别的了。。。</p>
-
-    </div>
-    
-    
-    
-    
-    
-    
-    
-</div>
-
-            <footer id="footer">
-    <div id="footer-wrap">
-        <div>
-            &copy;
-            2022 - 2025 nini&#39;s Magical Journey
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;nini
-        </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
+    </article>
+    <section class="related">
+        <p class="eyebrow">More in Thought Corner</p>
+        <div class="post-list"><article class="post-row">
+    <time datetime="2025-06-15">2025-06-15</time>
+    <div class="post-row-main">
+      <h3><a href="../%E3%80%8AWALL%C2%B7E%E3%80%8B/index.html">《WALL·E》</a></h3>
+      <div class="row-meta">
+        <a href="../../../../categories/thought-corner/index.html">Thought Corner</a>
         
+      </div>
+      <p>——“我们要的不是生存，是生活！” ​ 在第二次看完这部电影才写下这篇感想，怎么说呢，它是唯一一部我看完第一遍就立刻想要再看一遍的电影，在我心目中是与《心灵奇旅》并列的存在，它给我的感受，只能用震撼来形容，一种不同于所谓画面所谓剧情的震撼，</p>
     </div>
-</footer>
-
-        </div>
+  </article>
+<article class="post-row">
+    <time datetime="2025-06-15">2025-06-15</time>
+    <div class="post-row-main">
+      <h3><a href="../%E3%80%8A%E6%97%A0%E6%95%B0%E3%80%8B&amp;&amp;%20%E2%80%9C%E7%94%A8%E3%80%8A%E6%97%A0%E6%95%B0%E3%80%8B%E6%89%93%E5%BC%80%E5%9B%BD%E9%99%85%E5%85%B1%E4%BA%A7%E4%B8%BB%E4%B9%89%E8%A7%A3%E6%94%BE%E5%8F%B2%E2%80%9D/index.html">《无数》&amp;&amp; “用《无数》打开国际共产主义解放史”</a></h3>
+      <div class="row-meta">
+        <a href="../../../../categories/thought-corner/index.html">Thought Corner</a>
         
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-        </transition>
-        
+      </div>
+      <p>用《无数》打开国际共产主义解放史_哔哩哔哩_bilibili 首先《无数》这首歌是十分激昂的，主要表达的是“我”或者“我们”坚持自己的真理为之奋斗和牺牲这件事，当然不是某件具体的叙事，是一种抽象的表达 一下是所有歌词以及我对一些我喜欢的地方</p>
     </div>
-    <script src="/js/main.js"></script>
-    
-    
-
-
-
-
-    
+  </article>
+<article class="post-row">
+    <time datetime="2025-01-09">2025-01-09</time>
+    <div class="post-row-main">
+      <h3><a href="../../../01/09/Beginning/index.html">Beginning</a></h3>
+      <div class="row-meta">
+        <a href="../../../../categories/thought-corner/index.html">Thought Corner</a>
+        
+      </div>
+      <p>Beginning 2025.1.9 从今天开始也是着手准备记录一些东西了，与朋友圈的记录不同，那里总是要考虑会有各种各样的人看到，要考虑自己要分享哪些东西，但这里的记录，或许只是单纯的希望能为一些有意思的事情留下痕迹，这种记录早就该开始了</p>
+    </div>
+  </article></div>
+      </section>
+  </main>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <p>&copy; 2022 - 2026 nini's Magical Journey &middot; @nini</p>
+      <p>Notes, films, code, and ordinary days.</p>
+    </div>
+  </footer>
 </body>
 </html>

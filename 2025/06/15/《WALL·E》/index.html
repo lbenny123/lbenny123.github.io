@@ -1,250 +1,95 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="utf-8" />
-    <title>《WALL·E》 | nini&#39;s Magical Journey</title>
-    <meta name="author" content="nini" />
-    <meta name="description" content="Becoming is not my concern. Leaving traces—that’s enough." />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href="/images/avatar.jpg" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
-
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
-
-
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/css/main.css" />
-
-<meta name="generator" content="Hexo 7.3.0"></head>
-<body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/">
-            <span>NINI&#39;S MAGICAL JOURNEY</span>
-        </a>
-        
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/categories/thought-corner/">
-            <i class="fa-solid fa-lightbulb fa-fw"></i>
-            <span>&ensp;Thought Corner</span>
-        </a>
-        
-        <a href="/categories/weekly/">
-            <i class="fa-solid fa-calendar-week fa-fw"></i>
-            <span>&ensp;Weekly</span>
-        </a>
-        
-        <a href="/categories/tech-notes/">
-            <i class="fa-solid fa-code fa-fw"></i>
-            <span>&ensp;Tech Notes</span>
-        </a>
-        
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;NINI&#39;S MAGICAL JOURNEY</span>
-        </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/categories/thought-corner/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-lightbulb fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Thought Corner</div>
-                    </div>
-                </a>
-                
-                <a href="/categories/weekly/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-calendar-week fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Weekly</div>
-                    </div>
-                </a>
-                
-                <a href="/categories/tech-notes/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-code fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tech Notes</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
-
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div class="article">
-    <div>
-        <h1>《WALL·E》</h1>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>《WALL·E》 | nini's Magical Journey</title>
+  <meta name="author" content="nini">
+  <meta name="description" content="——“我们要的不是生存，是生活！” ​ 在第二次看完这部电影才写下这篇感想，怎么说呢，它是唯一一部我看完第一遍就立刻想要再看一遍的电影，在我心目中是与《心灵奇旅》并列的存在，它给我的感受，只能用震撼来形容，一种不同于所谓画面所谓剧情的震撼，">
+  <link rel="icon" href="../../../../images/avatar.jpg">
+  <link rel="stylesheet" href="../../../../css/main.css">
+</head>
+<body class="article-page">
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="../../../../index.html" aria-label="nini's Magical Journey">
+        <img src="../../../../images/avatar.jpg" alt="" width="40" height="40">
+        <span>nini's Magical Journey</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="" href="../../../../index.html">Home</a><a class="" href="../../../../archives/index.html">Archives</a><a class="" href="../../../../categories/index.html">Categories</a><a class="" href="../../../../about/index.html">About</a>
+      </nav>
     </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/6/15
-        </span>
+  </header>
+  <main class="article-shell">
+    <header class="article-head">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../../../index.html">Home</a>
+        <span>/</span>
+        <a href="../../../../categories/thought-corner/index.html">Thought Corner</a>
+      </nav>
+      <h1>《WALL·E》</h1>
+      <p class="article-summary">——“我们要的不是生存，是生活！” ​ 在第二次看完这部电影才写下这篇感想，怎么说呢，它是唯一一部我看完第一遍就立刻想要再看一遍的电影，在我心目中是与《心灵奇旅》并列的存在，它给我的感受，只能用震撼来形容，一种不同于所谓画面所谓剧情的震撼，</p>
+      <div class="article-meta">
+        <time datetime="2025-06-15">2025-06-15</time>
+        <a href="../../../../categories/thought-corner/index.html">Thought Corner</a>
         
-        <span class="category">
-            <a href="/categories/thought-corner/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                thought_corner
-            </a>
-        </span>
-        
-        
-    </div>
-    
-    <div class="content" v-pre>
-        <p>——“我们要的不是生存，是生活！” </p>
+      </div>
+    </header>
+    <article class="article-body">
+      <p>——“我们要的不是生存，是生活！” </p>
 <p>​    在第二次看完这部电影才写下这篇感想，怎么说呢，它是唯一一部我看完第一遍就立刻想要再看一遍的电影，在我心目中是与《心灵奇旅》并列的存在，它给我的感受，只能用震撼来形容，一种不同于所谓画面所谓剧情的震撼，我甚至不知道如何形容。作为一个曾经因为被功利主义洗脑而十分痛苦但现在已经渐渐摆脱的人来说，这部电影无疑是我的又一“论据”，或许正是因为它基于存在主义的内核，让我如此感动如此震撼吧。</p>
 <p>​    瓦力，一只看似老旧的垃圾处理机器人，在没有一个人甚至没有什么活物的地球上，独自生活了700年，若他是一个按照程序运行的真正意义上的机器人也就罢了，可是看到他的第一眼，我似乎就感受到了，他的灵魂。在这里不由得敬佩一下皮克斯，迪士尼等等等等 我们见过那么多那么多机器人的形象，可是只有瓦力，第一眼便能让人感觉他是不同的，他像一个人，他是一个人。 从他破旧的机身，望远镜组成的脑袋上，就能感受到他的呆萌。在影片前一段展现瓦力的生活时，我总是被他逗笑，他是如此可爱，如此充满热情，他对生活的热爱似乎超过了很多很多人。有多少人能忍受在几乎没有生灵的地球过完一生呢 ? 但瓦力过了七百年，七百年后的今天，他的生活仍然是每天提着一个小箱子，一边处理垃圾一边把自己觉得好玩喜欢的东西放在箱子里带回家收藏，工作完再看看人类的影片，模仿他们跳跳舞，再幻想一下自己拥有爱情与恋人牵手的场景，还时不时在夜晚坐在门外看星星。何其孤独，何其自由，又何其快乐。他看似傻傻的，呆呆的，可可爱爱，但他的灵魂又是那么纯粹，那么有趣，可以让他一个机积极地度过这么漫长的岁月。特别是他捡到装着钻石的小盒时，他扔掉那个闪闪发光的钻石，留下那个可以活动的精致的小盒子，让我更能感受到他的纯粹，这或许是特意设计的情节吧，也不禁让人审视自己，是否能看清自己的内心，看清自己真正想要的是什么，不被外界所定义的价值裹挟。一个小小的细节都如此值得品味，这部电影可以争当动画影史第一一点都不为过。</p>
-<p><img src="/%E3%80%8AWALL%C2%B7E%E3%80%8B%201b5c6d0cd497801cb2e7f979c6530935/OIP-C.jpg" alt="OIP-C.jpg"></p>
+<figure class="missing-image">
+  <div>原始 WALL·E 配图未保留</div>
+  <figcaption>当前仓库里只剩文字内容，所以这里先保留一个说明位。</figcaption>
+</figure>
 <p>前半段几乎没有台词，却能让人如此沉浸其中去体验瓦力的经历，每分每秒都被他的一举一动所吸引，每一帧每一画都如此美丽，他跟随飞船上太空时的银河，星空，如此绚丽多彩，如此浪漫，极大满足了我特别特别爱星空的喜好。</p>
 <p>   瓦力进入了人类的太空基地后，人类才真正地进入了这部电影的叙事进程中。如过说前半段让人审视自己，后半段则是一个鼓励的过程，确实，当时的人类只会坐在躺椅上沉浸在虚拟世界中，走在既定的轨道上，甚至从未看看身边的环境。而瓦力的到来唤醒了John和（名字忘了），同时也让船长脱离的既定的轨道。这里的船长也出乎我的意料，过了这么久躺着的生活，但在看到火光，看到生命时他竟然毅然地决定要回去，回到地球，同时喊出了那句话 “我们要的不是生存，是生活！” ，如果说前面一些画面在隐隐地批判人类的话，那这里我能感到一些鼓励，并不是所有人都如此被欲望裹挟，还有人也如瓦力一般，向往真正的生活。</p>
 <p>​    这部电影让我激动了很久很久，瓦力对我的吸引无可限量，或许说他的生活态度他的纯粹便是我一直想要追随的拥有的，在这个世界上，最爱我的父母总是用世俗价值观来告诉我我需要干什么，中学时代无数老师也在告诉我们，高考最重要，只有把高考考好了才会有更幸福的人生，就如我曾经看到的一句话，”性和死亡本身是人生最重要的话题，可是学校都不教 “ 网络上无数言论同时也在喧嚣着，教我们干着干那。一个人从小到大，似乎总是在被“爹味”地指导着，每一个方面，都有声音来告诉我们该怎么做，唯独缺少了一个声音，在我们重要的节点上，问我们，“你想要什么”，“你想要怎么生活”。。。。。这大概是国内教育的无力现状吧。。。所幸，自己也发现了这种功利主义的不适，慢慢地改变，慢慢地学习22号（《心灵奇旅》），学习瓦力，专注于自己的内心，好好生活。相信自己总会一直过自己期待的生活，每一天都是按照自己的意愿自由地活着。</p>
-
-    </div>
-    
-    
-    
-    
-    
-    
-    
-</div>
-
-            <footer id="footer">
-    <div id="footer-wrap">
-        <div>
-            &copy;
-            2022 - 2025 nini&#39;s Magical Journey
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;nini
-        </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
+    </article>
+    <section class="related">
+        <p class="eyebrow">More in Thought Corner</p>
+        <div class="post-list"><article class="post-row">
+    <time datetime="2025-06-15">2025-06-15</time>
+    <div class="post-row-main">
+      <h3><a href="../%E3%80%8A%E5%BD%B1%E5%90%8E%E3%80%8B/index.html">《影后》</a></h3>
+      <div class="row-meta">
+        <a href="../../../../categories/thought-corner/index.html">Thought Corner</a>
         
+      </div>
+      <p>《影后》 从开学到现在拖了这么久这部剧也是看完了 ​ 开始是无意间刷到一个up主的视频，一听描述就迫不及待地找来看了，“展现演员的生活“ 这点让我毫无抵抗力 小学初中的我超级爱看电视剧，连带着超级好奇演员是啥样的，做梦都想见到自己看的剧中的</p>
     </div>
-</footer>
-
-        </div>
+  </article>
+<article class="post-row">
+    <time datetime="2025-06-15">2025-06-15</time>
+    <div class="post-row-main">
+      <h3><a href="../%E3%80%8A%E6%97%A0%E6%95%B0%E3%80%8B&amp;&amp;%20%E2%80%9C%E7%94%A8%E3%80%8A%E6%97%A0%E6%95%B0%E3%80%8B%E6%89%93%E5%BC%80%E5%9B%BD%E9%99%85%E5%85%B1%E4%BA%A7%E4%B8%BB%E4%B9%89%E8%A7%A3%E6%94%BE%E5%8F%B2%E2%80%9D/index.html">《无数》&amp;&amp; “用《无数》打开国际共产主义解放史”</a></h3>
+      <div class="row-meta">
+        <a href="../../../../categories/thought-corner/index.html">Thought Corner</a>
         
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-        </transition>
-        
+      </div>
+      <p>用《无数》打开国际共产主义解放史_哔哩哔哩_bilibili 首先《无数》这首歌是十分激昂的，主要表达的是“我”或者“我们”坚持自己的真理为之奋斗和牺牲这件事，当然不是某件具体的叙事，是一种抽象的表达 一下是所有歌词以及我对一些我喜欢的地方</p>
     </div>
-    <script src="/js/main.js"></script>
-    
-    
-
-
-
-
-    
+  </article>
+<article class="post-row">
+    <time datetime="2025-01-09">2025-01-09</time>
+    <div class="post-row-main">
+      <h3><a href="../../../01/09/Beginning/index.html">Beginning</a></h3>
+      <div class="row-meta">
+        <a href="../../../../categories/thought-corner/index.html">Thought Corner</a>
+        
+      </div>
+      <p>Beginning 2025.1.9 从今天开始也是着手准备记录一些东西了，与朋友圈的记录不同，那里总是要考虑会有各种各样的人看到，要考虑自己要分享哪些东西，但这里的记录，或许只是单纯的希望能为一些有意思的事情留下痕迹，这种记录早就该开始了</p>
+    </div>
+  </article></div>
+      </section>
+  </main>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <p>&copy; 2022 - 2026 nini's Magical Journey &middot; @nini</p>
+      <p>Notes, films, code, and ordinary days.</p>
+    </div>
+  </footer>
 </body>
 </html>

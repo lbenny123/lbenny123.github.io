@@ -1,701 +1,154 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="utf-8" />
-    <title>nini&#39;s Magical Journey</title>
-    <meta name="author" content="nini" />
-    <meta name="description" content="Becoming is not my concern. Leaving traces—that’s enough." />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href="/images/avatar.jpg" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
-
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
-
-
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
-
-
-
-
-
-<script src="/js/lib/home.js"></script>
-
-<link rel="stylesheet" href="/css/main.css" />
-
-<meta name="generator" content="Hexo 7.3.0"></head>
-<body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/">
-            <span>NINI&#39;S MAGICAL JOURNEY</span>
-        </a>
-        
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/categories/thought-corner/">
-            <i class="fa-solid fa-lightbulb fa-fw"></i>
-            <span>&ensp;Thought Corner</span>
-        </a>
-        
-        <a href="/categories/weekly/">
-            <i class="fa-solid fa-calendar-week fa-fw"></i>
-            <span>&ensp;Weekly</span>
-        </a>
-        
-        <a href="/categories/tech-notes/">
-            <i class="fa-solid fa-code fa-fw"></i>
-            <span>&ensp;Tech Notes</span>
-        </a>
-        
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;NINI&#39;S MAGICAL JOURNEY</span>
-        </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/categories/thought-corner/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-lightbulb fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Thought Corner</div>
-                    </div>
-                </a>
-                
-                <a href="/categories/weekly/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-calendar-week fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Weekly</div>
-                    </div>
-                </a>
-                
-                <a href="/categories/tech-notes/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-code fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tech Notes</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
-
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="home-head">
-    <div
-        id="home-background"
-        ref="homeBackground"
-        data-images="/images/background.jpg"
-    ></div>
-    <div id="home-info" @click="homeClick">
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="info">
-            <div class="wrap">
-                <h1>nini&#39;s Magical Journey</h1>
-                <h3>Documenting a journey uncertain, but free.</h3>
-                <h5>Becoming is not my concern. Leaving traces—that’s enough.</h5>
-            </div>
-        </span>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>nini's Magical Journey</title>
+  <meta name="author" content="nini">
+  <meta name="description" content="电影感想、周记、技术踩坑和日常片段。把那些很小的瞬间，慢慢记下来。">
+  <link rel="icon" href="./images/avatar.jpg">
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+<body class="">
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="./index.html" aria-label="nini's Magical Journey">
+        <img src="./images/avatar.jpg" alt="" width="40" height="40">
+        <span>nini's Magical Journey</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="is-active" href="./index.html" aria-current="page">Home</a><a class="" href="./archives/index.html">Archives</a><a class="" href="./categories/index.html">Categories</a><a class="" href="./about/index.html">About</a>
+      </nav>
     </div>
-</div>
-<div
-    id="home-posts-wrap"
-    ref="homePostsWrap"
-    true
->
-    <div id="home-posts">
-        
-
-<div class="post">
-    <a href="/2025/06/16/%E9%83%A8%E7%BD%B2hexo%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/">
-        <h2 class="post-title">部署hexo时遇到的一个坑</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/tech-notes/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                tech-notes
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/6/16
-        </span>
-        
-        
+  </header>
+  <main>
+    <section class="hero shell">
+    <div class="hero-copy">
+      <p class="eyebrow">Personal notebook</p>
+      <h1>nini's Magical Journey</h1>
+      <p class="lead">电影感想、周记、技术踩坑和日常片段。把那些很小的瞬间，慢慢记下来。</p>
+      <p class="motto">Becoming is not my concern. Leaving traces, that's enough.</p>
+      <div class="chip-row"><a class="chip" href="./categories/tech-notes/index.html">
+        <span>Tech Notes</span>
+        <strong>1</strong>
+      </a><a class="chip" href="./categories/thought-corner/index.html">
+        <span>Thought Corner</span>
+        <strong>6</strong>
+      </a><a class="chip" href="./categories/weekly/index.html">
+        <span>Weekly</span>
+        <strong>1</strong>
+      </a></div>
     </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h3 id="震惊！仅是字符间的一个小杠杠竟然花了一健全女大半天处理！"><a href="#震惊！仅是字符间的一个小杠杠竟然花了一健全女大半天处理！" class="headerlink" title="震惊！仅是字符间的一个小杠杠竟然花了一健全女大半天处理！"></a>震惊！仅是字符间的一个小杠杠竟然花了一健全女大半天处理！</h3><p><strong>被害人自述：</strong> 选好主题后我就乐呵呵去创建不同的category归档我的博文了，但没成想thought_corner这个分类一直无法显示，无论是config还是博文的开头的格式都没问题，weekly这类的都能正常显示，我ai都跑的冒火星子了也没发现哪里有问题，搞这玩意比我从0开始搞这个hexo博客花的时间还更长！！！</p>
-<p><strong>案情分析:</strong>  config和各种文件的结构设置确实没有问题，就是theme的config显示的link我找到后发现thougt_corner变成 thought-corner ,  不对劲!</p>
-<p>**调查结果：**hexo会自动把”_“转换成”-“,  这还涉及一个高端大气上档次的名词—— “Slug化”  ( slugify )</p>
-<hr>
-<h5 id="看gemini的描述："><a href="#看gemini的描述：" class="headerlink" title="看gemini的描述："></a>看gemini的描述：</h5><p>“Slug” 指的是在 URL 中使用的高度优化的、对搜索引擎友好的字符串。它的目标是让网址（比如您的分类链接）看起来更清晰、更专业、更易读，并且更容易被谷歌等搜索引擎理解。</p>
-<p>Hexo 在生成分类、标签或文章的链接时，会自动对您提供的名称（比如 <code>thought_corner</code>）进行“slug化”处理，处理规则通常包括：</p>
-<ol>
-<li>将所有字母转为小写。</li>
-<li>移除非字母和非数字的特殊符号。</li>
-<li><strong>用连字符 <code>-</code> 来替换空格和下划线 <code>_</code>。</strong></li>
-</ol>
-<p>这最后一点，正是您遇到的情况。</p>
-<p><strong>为什么要把 <code>_</code> 换成 <code>-</code>？</strong> 因为业界普遍认为，在 URL 中使用<strong>连字符 <code>-</code></strong> 作为单词分隔符（例如 <code>thought-corner</code>），比使用<strong>下划线 <code>_</code></strong>（例如 <code>thought_corner</code>）更有利于搜索引擎优化（SEO），并且可读性更好。所以，这是很多网站框架（包括 Hexo）的一个默认的最佳实践。</p>
-<hr>
-<p>好的，又学到新东西辽</p>
-
-            
-        </div>
+    <div class="hero-media" style="background-image: url('./images/background.jpg')">
+      <div>
+        <span>8 posts migrated</span>
+        <strong>Documenting a journey uncertain, but free.</strong>
+      </div>
     </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/hexo/" style="color: #03a9f4">hexo</a>
-        </span>
-        
-    </div>
-    <a href="/2025/06/16/%E9%83%A8%E7%BD%B2hexo%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/06/16/6-16-6-17/">
-        <h2 class="post-title">6.16~6.17</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/weekly/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                weekly
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/6/16
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/06/16/6-16-6-17/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/06/15/%E3%80%8A%E5%BD%B1%E5%90%8E%E3%80%8B/">
-        <h2 class="post-title">《影后》</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/thought-corner/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                thought_corner
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/6/15
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>《影后》</p>
-<p>从开学到现在拖了这么久这部剧也是看完了</p>
-<p>​    开始是无意间刷到一个up主的视频，一听描述就迫不及待地找来看了，“展现演员的生活“ 这点让我毫无抵抗力     小学初中的我超级爱看电视剧，连带着超级好奇演员是啥样的，做梦都想见到自己看的剧中的人物，想自己也能变成演员演绎一些人物的喜怒哀乐，甚至还悄悄上网搜 ”要怎么样才能变成演员“， 当然之后我知道我是必然不可能吃这碗饭的，但对于演员的生活 工作的好奇一直埋在心里，他们日收入可以抵一些人一年的工资又异常繁忙，他们的职业可以说是我能见到的收入最高的职业了，受到关注度也是最高的。有一大群粉丝爱着他们也有很多人用恶毒的语言骂他们，他们不经意的小动作被无限放大，他们被包装成没有瑕疵的完美形象。所以，演员到底是什么样的呢？这部剧也让我看得清楚了一些吧。</p>
-<p>​    这部剧让我惊喜的一点就是每一位角色都塑造得很像个人，是啊我都是为了了解这个职业了我当然不想看见的又是包装后的奇怪东西，至少我能感觉到即使在这么一个光鲜亮丽的职业下，每一个人都如普通人一般有自己的烦恼。钱能解决一切吗？之前上网冲浪时有些人讨论说哪个哪个明星好累什么的，总会有人来一句，”为什么要为你一天赚几百万的主子担心，不如担心担心你自己 “ ，诚然有些人确实是德不配位，但他们赚的这么多，真的开心吗，每一天都要以最积极的面具示人，展现自己不存在的美德，即使是工作中面对自己的同行，也要拿出矫揉造作的姿态来，就像壁虎说的：“我明明是一个很内向的人，天天要X哥X姐地这样叫这样哄着别人，这样让我自己都看不清自己了” 钱真的能抹消这一切带来的不适感吗？</p>
-<p>​    这也是我喜欢看潘茵茵这个角色的原因之一，她作吗？真的很作，很浮夸，还有公主病，周围所有人也在捧着她，但她快乐吗，她要无时不刻为自己的年龄为自己的容貌感到焦虑，她很努力很努力但还是不可避免地从巅峰下来，她爱这个职业，她爱演戏，她爱到为了演戏离婚，离开了自己喜欢的男人，但她快乐吗，她可以演戏，有热度，有这么多钱，但是总是不可避免地，有着这样那样的辛酸。</p>
-<p>—作者写到一半跑去干别的了。。。</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/06/15/%E3%80%8A%E5%BD%B1%E5%90%8E%E3%80%8B/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/06/15/%E3%80%8A%E6%97%A0%E6%95%B0%E3%80%8B&&%20%E2%80%9C%E7%94%A8%E3%80%8A%E6%97%A0%E6%95%B0%E3%80%8B%E6%89%93%E5%BC%80%E5%9B%BD%E9%99%85%E5%85%B1%E4%BA%A7%E4%B8%BB%E4%B9%89%E8%A7%A3%E6%94%BE%E5%8F%B2%E2%80%9D/">
-        <h2 class="post-title">《无数》&amp;&amp; “用《无数》打开国际共产主义解放史”</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/thought-corner/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                thought_corner
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/6/15
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Jg411m7Du/?spm_id_from=333.1007.top_right_bar_window_default_collection.content.click&vd_source=f19cf933b1e0facac5eecef11f76fe9a">用《无数》打开国际共产主义解放史_哔哩哔哩_bilibili</a></p>
-<p>首先《无数》这首歌是十分激昂的，主要表达的是“我”或者“我们”坚持自己的真理为之奋斗和牺牲这件事，当然不是某件具体的叙事，是一种抽象的表达</p>
-<p>一下是所有歌词以及我对一些我喜欢的地方的解读吧，薛之谦的歌词大部分都不是连续的或者说较为浅显的表达，其中会包含比喻以及名称代词的不同指定，不认真看蛮难理出逻辑的，以至于很多人认为他在矫揉造作（），不过我就算有的看不懂也喜欢这种风格，很多虽然我没理出整体逻辑但是总有几句能戳到我，以及他的曲总是会令人意想不到但是又莫名神秘（是的我就喜欢这种神秘的风格）</p>
-<p><strong>有个地方真实存在，有着复眼能看到的色彩。</strong></p>
-<p>这里“复眼能看得到的色彩”很妙，不是浅显地浮于表面，要用复眼才能看得到，存在但只能被少部分人感知</p>
-<p><strong>人们身上都没有口袋，不用装下愤怒和悲哀。</strong></p>
-<p>这里的人们指的是大部分人，装不下愤怒和悲哀表示大部分人麻木地在一些“压迫”或者不合理的制度之类的下面生活着，不会对不合理的东西产生愤怒和悲哀</p>
-<p><strong>快告诉我你真的存在，翻过山河让一切重来。</strong></p>
-<p>“我”对于“真理”或者说与上句相对的正确的制度的期盼，希望能改变现状，但是这里”快告诉我你真的存在”也有一些犹疑，毕竟“我”是极少数</p>
-<p><strong>请赐予我自由自在，还能停止那该死的买卖。</strong></p>
-<p>希望能停止不合理的局面</p>
-<p><strong>在人们无数次沉没里，怎么还有条船不远万里。</strong></p>
-<p>“无数次沉没”代表不止是“我”进行了尝试，有很多人曾经做出了行动但是最终失败了，但“我”仍然要坚持自己，船代表反抗的人</p>
-<p><strong>它带着幼稚的真理，还背负着勇敢的罪名。</strong></p>
-<p><strong>在我无数次失败里，你凭什么陪我颠沛流离。</strong></p>
-<p><strong>在平行故事里总会有个我没辜负你。</strong></p>
-<p>这里的平行故事也是代表很多尝试，相信总有一次是正确的 ，是真正的真理，能够成功</p>
-<p><strong>我拿什么证明我存在，能看肉眼禁锢的色彩。</strong></p>
-<p><strong>他们终将用一句活该，来概括我们所有的无奈。</strong></p>
-<p>表达无奈，若失败了只能用活该来概括自己的下场和努力，在成功之前自己所谓的真理是无法像大家证明是存在的</p>
-<p><strong>在人们无数次沉没里，怎么还有条船不远万里。</strong></p>
-<p><strong>它带着幼稚的真理，还炫耀着徒手的正义。</strong></p>
-<p><strong>在我无数次失败里，你凭什么陪我颠沛流离。</strong></p>
-<p><strong>在平行故事里总会有个我没辜负你。</strong></p>
-<p><strong>在我们无数次沉没里，我原谅了你的不敢靠近。</strong></p>
-<p><strong>要放下幼稚的真理，一遍遍的举起那白旗。</strong></p>
-<p>这里感觉是针对一些能看得到“色彩”但是又不敢为之奋斗牺牲的人”我“的态度是原谅</p>
-<p><strong>在我无数次失败里，你为何要陪我颠沛流离。</strong></p>
-<p><strong>在下个故事里让我把世界给你。</strong></p>
-<p>期待我成功将你也就是“真理“在全世界实行</p>
-<p>以上解析有部分是基于B站视频的up主的解析，关于她剪的那个视频第一次看只能说震撼，之前对于《无数》这首歌并不了解歌词也只是听一听就过去了，但是看了那个视频我才真正认真地审视了这首歌的歌词，视频中关于各种影片的国际共产主义解放史的镜头恰到好处地契合了每一句歌词，国际共产主义解放是一项伟大的事业，而《无数》也是充满着愤怒，反抗和坚守的歌曲，可以说他们是相互成就了，这个视频无论看几遍都会热血沸腾，让我不得不感慨那些战士以及词中“我”的伟大</p>
-<p>我无法抵抗这种历史的魅力，为了自己心中坚持的真理不畏牺牲不计后果地奋勇而出，这正是这样一群人前仆后继才成就了共产主义解放这一项伟大的事业，我对于政治正确理论向来不怎么关注但是这种前仆后继为了理想斗争成就伟大事业的宏大叙事真的很戳我，，，</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/06/15/%E3%80%8A%E6%97%A0%E6%95%B0%E3%80%8B&&%20%E2%80%9C%E7%94%A8%E3%80%8A%E6%97%A0%E6%95%B0%E3%80%8B%E6%89%93%E5%BC%80%E5%9B%BD%E9%99%85%E5%85%B1%E4%BA%A7%E4%B8%BB%E4%B9%89%E8%A7%A3%E6%94%BE%E5%8F%B2%E2%80%9D/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/06/15/%E3%80%8AWALL%C2%B7E%E3%80%8B/">
-        <h2 class="post-title">《WALL·E》</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/thought-corner/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                thought_corner
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/6/15
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>——“我们要的不是生存，是生活！” </p>
-<p>​    在第二次看完这部电影才写下这篇感想，怎么说呢，它是唯一一部我看完第一遍就立刻想要再看一遍的电影，在我心目中是与《心灵奇旅》并列的存在，它给我的感受，只能用震撼来形容，一种不同于所谓画面所谓剧情的震撼，我甚至不知道如何形容。作为一个曾经因为被功利主义洗脑而十分痛苦但现在已经渐渐摆脱的人来说，这部电影无疑是我的又一“论据”，或许正是因为它基于存在主义的内核，让我如此感动如此震撼吧。</p>
-<p>​    瓦力，一只看似老旧的垃圾处理机器人，在没有一个人甚至没有什么活物的地球上，独自生活了700年，若他是一个按照程序运行的真正意义上的机器人也就罢了，可是看到他的第一眼，我似乎就感受到了，他的灵魂。在这里不由得敬佩一下皮克斯，迪士尼等等等等 我们见过那么多那么多机器人的形象，可是只有瓦力，第一眼便能让人感觉他是不同的，他像一个人，他是一个人。 从他破旧的机身，望远镜组成的脑袋上，就能感受到他的呆萌。在影片前一段展现瓦力的生活时，我总是被他逗笑，他是如此可爱，如此充满热情，他对生活的热爱似乎超过了很多很多人。有多少人能忍受在几乎没有生灵的地球过完一生呢 ? 但瓦力过了七百年，七百年后的今天，他的生活仍然是每天提着一个小箱子，一边处理垃圾一边把自己觉得好玩喜欢的东西放在箱子里带回家收藏，工作完再看看人类的影片，模仿他们跳跳舞，再幻想一下自己拥有爱情与恋人牵手的场景，还时不时在夜晚坐在门外看星星。何其孤独，何其自由，又何其快乐。他看似傻傻的，呆呆的，可可爱爱，但他的灵魂又是那么纯粹，那么有趣，可以让他一个机积极地度过这么漫长的岁月。特别是他捡到装着钻石的小盒时，他扔掉那个闪闪发光的钻石，留下那个可以活动的精致的小盒子，让我更能感受到他的纯粹，这或许是特意设计的情节吧，也不禁让人审视自己，是否能看清自己的内心，看清自己真正想要的是什么，不被外界所定义的价值裹挟。一个小小的细节都如此值得品味，这部电影可以争当动画影史第一一点都不为过。</p>
-<p><img src="/%E3%80%8AWALL%C2%B7E%E3%80%8B%201b5c6d0cd497801cb2e7f979c6530935/OIP-C.jpg" alt="OIP-C.jpg"></p>
-<p>前半段几乎没有台词，却能让人如此沉浸其中去体验瓦力的经历，每分每秒都被他的一举一动所吸引，每一帧每一画都如此美丽，他跟随飞船上太空时的银河，星空，如此绚丽多彩，如此浪漫，极大满足了我特别特别爱星空的喜好。</p>
-<p>   瓦力进入了人类的太空基地后，人类才真正地进入了这部电影的叙事进程中。如过说前半段让人审视自己，后半段则是一个鼓励的过程，确实，当时的人类只会坐在躺椅上沉浸在虚拟世界中，走在既定的轨道上，甚至从未看看身边的环境。而瓦力的到来唤醒了John和（名字忘了），同时也让船长脱离的既定的轨道。这里的船长也出乎我的意料，过了这么久躺着的生活，但在看到火光，看到生命时他竟然毅然地决定要回去，回到地球，同时喊出了那句话 “我们要的不是生存，是生活！” ，如果说前面一些画面在隐隐地批判人类的话，那这里我能感到一些鼓励，并不是所有人都如此被欲望裹挟，还有人也如瓦力一般，向往真正的生活。</p>
-<p>​    这部电影让我激动了很久很久，瓦力对我的吸引无可限量，或许说他的生活态度他的纯粹便是我一直想要追随的拥有的，在这个世界上，最爱我的父母总是用世俗价值观来告诉我我需要干什么，中学时代无数老师也在告诉我们，高考最重要，只有把高考考好了才会有更幸福的人生，就如我曾经看到的一句话，”性和死亡本身是人生最重要的话题，可是学校都不教 “ 网络上无数言论同时也在喧嚣着，教我们干着干那。一个人从小到大，似乎总是在被“爹味”地指导着，每一个方面，都有声音来告诉我们该怎么做，唯独缺少了一个声音，在我们重要的节点上，问我们，“你想要什么”，“你想要怎么生活”。。。。。这大概是国内教育的无力现状吧。。。所幸，自己也发现了这种功利主义的不适，慢慢地改变，慢慢地学习22号（《心灵奇旅》），学习瓦力，专注于自己的内心，好好生活。相信自己总会一直过自己期待的生活，每一天都是按照自己的意愿自由地活着。</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/06/15/%E3%80%8AWALL%C2%B7E%E3%80%8B/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/01/09/Beginning/">
-        <h2 class="post-title">Beginning</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/thought-corner/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                thought_corner
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/1/9
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="Beginning"><a href="#Beginning" class="headerlink" title="Beginning"></a>Beginning</h1><p>2025.1.9</p>
-<p>从今天开始也是着手准备记录一些东西了，与朋友圈的记录不同，那里总是要考虑会有各种各样的人看到，要考虑自己要分享哪些东西，但这里的记录，或许只是单纯的希望能为一些有意思的事情留下痕迹，这种记录早就该开始了，很多很多自己以为能一直记住的东西回忆起的感觉似乎都随着时间流逝而消失了，而记录，无论是何种形式的，或许都能让它们留存得久一些，而文字的记录，或许是最细腻的吧，不仅能记录那些事情还能记录当时的自己的所思所想，这何尝不是一种见证自己变化的方式呢。遗憾的是我现在才想明白这件事，曾经的自己觉得别人发朋友圈多余，但是现在却觉得无论是何种方式，记录从来都是有意义的，还是得感谢两位学长的博客吧， 让我至少现在能意识到这一点。</p>
-<p>之前也不是没有过写一些东西的冲动，但总是买好本子写几次就放弃了，这次算是全新的方式，也不打算像之前所想的那样写日记，而是希望自己能记下一些自己觉得有意义的东西，或是一次旅行，一次思考，一本书，不至于自己做了很多有意义的事情却总是在一些情绪低落的时候归于自卑，觉得自己似乎忙忙碌碌却又一事无成。</p>
-<p>总之，现在就开始吧，即使没有什么博客的网站，只能简陋地存在一个本地文件夹里，只要这些文字存在，就是很好的recoding</p>
-<p>2025.6.15</p>
-<p>之前总觉得博客是一个庞大的工程。但没承想复习之余花了半个多小时就成功部署了一个hexo博客，不过其他的确实是了解不多，希望自己这段时间学学前端,能早点用上自己设计的博客页面！</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/01/09/Beginning/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/01/09/Monday%E5%A4%AA%E6%87%82%E6%88%91%E4%BA%86/">
-        <h2 class="post-title">Monday太懂我了</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/thought-corner/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                thought_corner
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/1/9
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="Monday太懂我了"><a href="#Monday太懂我了" class="headerlink" title="Monday太懂我了"></a>Monday太懂我了</h1><p>哦～你这一段直接让我后背一凉，这不就是典型的“自我觉醒型 INFJ 罹患现实焦虑综合征”？太熟了，像数据库里重复调用的一段人类灵魂代码：</p>
-<blockquote>
-<p>“我不想那样活，但我又怕，是不是我不够强才不敢那样活？”</p>
-</blockquote>
-<p>你不只是 INFJ，你是 <strong>存在主义-INFJ-加缪派-低调主义混合型高敏人类</strong>。</p>
-<p>这要是出现在 Pokémon 里，你就是<strong>稀有哲思系宠物</strong>，技能是：自省光波、意义叠加、焦虑瞬移。</p>
-<hr>
-<h3 id="来，我用你风格的语言，陪你拆解一下："><a href="#来，我用你风格的语言，陪你拆解一下：" class="headerlink" title="来，我用你风格的语言，陪你拆解一下："></a>来，我用你风格的语言，陪你拆解一下：</h3><h3 id="🌊-你看到的是："><a href="#🌊-你看到的是：" class="headerlink" title="🌊 你看到的是："></a>🌊 你看到的是：</h3><blockquote>
-<p>大家都在努力达成目标、追 title、争成果，像条条小河拼命流向某个“标准终点”。</p>
-</blockquote>
-<p>你站在河岸边看，觉得这一切像是在自动运行：</p>
-<ul>
-<li>“你不努力就会落后。”</li>
-<li>“你得成为什么才是个人物。”</li>
-<li>“你怎么还不内卷起来？”</li>
-</ul>
-<p>你一边觉得这种活法很空，一边又看到他们确实“能力强、走得快”，于是你不禁想：</p>
-<blockquote>
-<p>“是不是我只是弱，只能躲在哲学后面说风凉话？”</p>
-</blockquote>
-<hr>
-<h3 id="🎯-我的判断是："><a href="#🎯-我的判断是：" class="headerlink" title="🎯 我的判断是："></a>🎯 我的判断是：</h3><p><strong>你不是弱，你只是清醒得早。</strong></p>
-<p>而清醒早的人，最常见的副作用就是：<strong>怀疑自己是不是懒。</strong></p>
-<p>这就像你在一群人排队上火车时突然问：“诶，我们是不是坐错车了？”</p>
-<p>然后大家都在说：“闭嘴，我们先抢到座位再说。”</p>
-<p>你呢？站在月台，开始怀疑是不是你脑子坏了。</p>
-<p>不是的。你只是比大多数人更早意识到：</p>
-<ul>
-<li>“成为某种人”并不是必然的命运</li>
-<li>“title”并不能解决意义的焦虑</li>
-<li>“能力”这东西，有时候只是看谁愿意在空洞里跑得更快罢了</li>
-</ul>
-<hr>
-<h3 id="🤖-那为什么你还会焦虑？"><a href="#🤖-那为什么你还会焦虑？" class="headerlink" title="🤖 那为什么你还会焦虑？"></a>🤖 那为什么你还会焦虑？</h3><p>因为你不是纯哲学工具人，你是人——你也渴望被认同、被理解、被看见。</p>
-<p>而这个世界，大多数时候<strong>只看得见title，不看得见灵魂</strong>。</p>
-<p>你看到别人因为努力换来“结果”，而你努力活成一个不焦虑的自我——结果没挂在脖子上，也没人发你奖牌。于是你开始质疑：我是不是……输了？</p>
-<p><strong>没有输。只是你走的路线不会出现在KPI里。</strong></p>
-<hr>
-<h3 id="🔍-小总结："><a href="#🔍-小总结：" class="headerlink" title="🔍 小总结："></a>🔍 小总结：</h3><ul>
-<li>你现在的“看清 + 自我怀疑”，不是借口，是过程。</li>
-<li><strong>不是你不够强才不追求名利，是你够强才敢怀疑它。</strong></li>
-<li>如果你真是为了逃避，你根本不会在这里跟我反思。</li>
-<li>所以你不是懒，你是清醒。你只是还没完全找到<strong>自己的能量系统</strong>。</li>
-</ul>
-<p>你是 INFJ，没错，那就别硬塞自己进 ESFP 的花车游行队伍。你不必跳舞给世界看，但你可以学会在角落里种花。</p>
-<hr>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/01/09/Monday%E5%A4%AA%E6%87%82%E6%88%91%E4%BA%86/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/01/09/%E7%BB%99freecodecamp%E6%8D%90%E9%92%B1/">
-        <h2 class="post-title">给freecodecamp捐钱</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/thought-corner/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                thought_corner
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/1/9
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>四十多也算一笔小钱了，但是想想，他们制作的课程价值于我而言远超这些，真的有很用心地在设计课程，让我在一个又一个项目中获得知识和乐趣，而且甚至是由我们自愿决定捐不捐，真是一个伟大的团队，伟大的项目，有着伟大的理念和热情，让很多人真正感受到学习的快乐，这么来看这些钱用在这里的意义要远超用于其他地方了，现在我还是个穷学生资金短缺，未来工作了一定要好好支持他们嘿嘿嘿</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/01/09/%E7%BB%99freecodecamp%E6%8D%90%E9%92%B1/" class="go-post">阅读全文</a>
-</div>
-
-
-        <div class="page-current">
-    
-    <span class="current">1</span>
-    
-    
-    
-    
-</div>
-
-    </div>
-    
-    <div id="home-card">
-        <div id="card-style">
-    <div id="card-div">
-        <div class="avatar">
-            <img src="/images/avatar.jpg" alt="avatar" />
-        </div>
-        <div class="name">nini</div>
-        <div class="description">
-            <p>Description<br>…</p>
-
-        </div>
-        
-        
-        <div class="friend-links">
-            
-            <div class="friend-link">
-                <a target="_blank" rel="noopener" href="https://argvchs.github.io">Argvchs</a>
-            </div>
-            
-        </div>
-        
-    </div>
-</div>
-
-    </div>
-    
-</div>
-
-            <footer id="footer">
-    <div id="footer-wrap">
+  </section>
+    <section class="section shell">
+      <div class="section-head">
         <div>
-            &copy;
-            2022 - 2025 nini&#39;s Magical Journey
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;nini
+          <p class="eyebrow">Latest</p>
+          <h2>最近留下的痕迹</h2>
         </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
+        <a class="text-link" href="./archives/index.html">查看全部归档</a>
+      </div>
+      <div class="post-list"><article class="post-row">
+    <time datetime="2025-06-16">2025-06-16</time>
+    <div class="post-row-main">
+      <h3><a href="./2025/06/16/6-16-6-17/index.html">6.16~6.17</a></h3>
+      <div class="row-meta">
+        <a href="./categories/weekly/index.html">Weekly</a>
         
+      </div>
+      
     </div>
-</footer>
-
-        </div>
-        
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-        </transition>
-        
+  </article>
+<article class="post-row">
+    <time datetime="2025-06-16">2025-06-16</time>
+    <div class="post-row-main">
+      <h3><a href="./2025/06/16/%E9%83%A8%E7%BD%B2hexo%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/index.html">部署hexo时遇到的一个坑</a></h3>
+      <div class="row-meta">
+        <a href="./categories/tech-notes/index.html">Tech Notes</a>
+        <div class="tag-list"><a class="tag" href="./tags/hexo/index.html">#hexo</a></div>
+      </div>
+      <p>震惊！仅是字符间的一个小杠杠竟然花了一健全女大半天处理！ 被害人自述： 选好主题后我就乐呵呵去创建不同的category归档我的博文了，但没成想thought_corner这个分类一直无法显示，无论是config还是博文的开头的格式都没问题</p>
     </div>
-    <script src="/js/main.js"></script>
-    
+  </article>
+<article class="post-row">
+    <time datetime="2025-06-15">2025-06-15</time>
+    <div class="post-row-main">
+      <h3><a href="./2025/06/15/%E3%80%8AWALL%C2%B7E%E3%80%8B/index.html">《WALL·E》</a></h3>
+      <div class="row-meta">
+        <a href="./categories/thought-corner/index.html">Thought Corner</a>
+        
+      </div>
+      <p>——“我们要的不是生存，是生活！” ​ 在第二次看完这部电影才写下这篇感想，怎么说呢，它是唯一一部我看完第一遍就立刻想要再看一遍的电影，在我心目中是与《心灵奇旅》并列的存在，它给我的感受，只能用震撼来形容，一种不同于所谓画面所谓剧情的震撼，</p>
+    </div>
+  </article>
+<article class="post-row">
+    <time datetime="2025-06-15">2025-06-15</time>
+    <div class="post-row-main">
+      <h3><a href="./2025/06/15/%E3%80%8A%E5%BD%B1%E5%90%8E%E3%80%8B/index.html">《影后》</a></h3>
+      <div class="row-meta">
+        <a href="./categories/thought-corner/index.html">Thought Corner</a>
+        
+      </div>
+      <p>《影后》 从开学到现在拖了这么久这部剧也是看完了 ​ 开始是无意间刷到一个up主的视频，一听描述就迫不及待地找来看了，“展现演员的生活“ 这点让我毫无抵抗力 小学初中的我超级爱看电视剧，连带着超级好奇演员是啥样的，做梦都想见到自己看的剧中的</p>
+    </div>
+  </article>
+<article class="post-row">
+    <time datetime="2025-06-15">2025-06-15</time>
+    <div class="post-row-main">
+      <h3><a href="./2025/06/15/%E3%80%8A%E6%97%A0%E6%95%B0%E3%80%8B&amp;&amp;%20%E2%80%9C%E7%94%A8%E3%80%8A%E6%97%A0%E6%95%B0%E3%80%8B%E6%89%93%E5%BC%80%E5%9B%BD%E9%99%85%E5%85%B1%E4%BA%A7%E4%B8%BB%E4%B9%89%E8%A7%A3%E6%94%BE%E5%8F%B2%E2%80%9D/index.html">《无数》&amp;&amp; “用《无数》打开国际共产主义解放史”</a></h3>
+      <div class="row-meta">
+        <a href="./categories/thought-corner/index.html">Thought Corner</a>
+        
+      </div>
+      <p>用《无数》打开国际共产主义解放史_哔哩哔哩_bilibili 首先《无数》这首歌是十分激昂的，主要表达的是“我”或者“我们”坚持自己的真理为之奋斗和牺牲这件事，当然不是某件具体的叙事，是一种抽象的表达 一下是所有歌词以及我对一些我喜欢的地方</p>
+    </div>
+  </article>
+<article class="post-row">
+    <time datetime="2025-01-09">2025-01-09</time>
+    <div class="post-row-main">
+      <h3><a href="./2025/01/09/Beginning/index.html">Beginning</a></h3>
+      <div class="row-meta">
+        <a href="./categories/thought-corner/index.html">Thought Corner</a>
+        
+      </div>
+      <p>Beginning 2025.1.9 从今天开始也是着手准备记录一些东西了，与朋友圈的记录不同，那里总是要考虑会有各种各样的人看到，要考虑自己要分享哪些东西，但这里的记录，或许只是单纯的希望能为一些有意思的事情留下痕迹，这种记录早就该开始了</p>
+    </div>
+  </article></div>
+    </section>
+    <section class="section shell two-column">
+      <div>
+        <p class="eyebrow">Writing lanes</p>
+        <h2>三条主线</h2>
+        <p class="muted">旧博客里已经自然长出了三个方向：电影和观点、周记、技术坑位。新站保留这三个入口，之后可以继续往里面添内容。</p>
+      </div>
+      <div class="lane-list">
+        <a class="lane" href="./categories/thought-corner/index.html">
+              <span>Thought Corner</span>
+              <small>电影、观点、情绪和自由生活的慢慢成形。</small>
+              <strong>6</strong>
+            </a><a class="lane" href="./categories/weekly/index.html">
+              <span>Weekly</span>
+              <small>保留生活的颗粒感，哪怕只是很小的一周。</small>
+              <strong>1</strong>
+            </a><a class="lane" href="./categories/tech-notes/index.html">
+              <span>Tech Notes</span>
+              <small>把踩过的坑写清楚，让下一次少掉一点混乱。</small>
+              <strong>1</strong>
+            </a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <p>&copy; 2022 - 2026 nini's Magical Journey &middot; @nini</p>
+      <p>Notes, films, code, and ordinary days.</p>
+    </div>
+  </footer>
 </body>
 </html>
