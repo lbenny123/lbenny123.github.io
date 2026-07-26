@@ -1,0 +1,85 @@
+avatar: /images/avatar.jpg
+
+background:
+  - /images/background.jpg
+
+loading: /images/loading.gif
+
+colors:
+  - "#ffa2c4"
+  - "#00bcd4"
+  - "#03a9f4"
+  - "#00a596"
+  - "#ff7d73"
+
+menu:
+  Home:
+    name: house
+    theme: solid
+    link: /
+  About:
+    name: id-card
+    theme: solid
+    link: /about
+  Archives:
+    name: box-archive
+    theme: solid
+    link: /archives
+  Thought Corner:
+    name: lightbulb
+    theme: solid
+    link: /categories/thought-corner/
+  Tech Notes:
+    name: code
+    theme: solid
+    link: /categories/tech-notes/
+
+card:
+  enable: true
+  description: |
+    Documenting a journey uncertain, but free.
+
+    Becoming is not my concern. Leaving traces—that’s enough.
+  iconLinks:
+  friendLinks:
+    Argvchs: https://argvchs.github.io
+
+footer:
+  since: 2022
+  ICP:
+    enable: false
+    code:
+    link:
+
+polyfill:
+  enable: true
+  features:
+    - default
+
+highlight:
+  enable: true
+  style: github
+
+math:
+  enable: false
+
+preview:
+  enable: true
+
+search:
+  enable: false
+
+crypto:
+  enable: false
+
+giscus:
+  enable: false
+
+gitalk:
+  enable: false
+
+waline:
+  enable: false
+
+twikoo:
+  enable: false

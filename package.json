@@ -1,0 +1,31 @@
+{
+  "name": "lbenny123-blog",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "hexo": {
+    "version": "7.3.0"
+  },
+  "scripts": {
+    "admin": "node tools/admin.mjs",
+    "preview": "hexo server",
+    "build": "hexo clean && hexo generate",
+    "publish": "node tools/publish.mjs"
+  },
+  "dependencies": {
+    "hexo": "7.3.0",
+    "hexo-deployer-git": "4.0.0",
+    "hexo-generator-archive": "2.0.0",
+    "hexo-generator-category": "2.0.0",
+    "hexo-generator-index": "4.0.0",
+    "hexo-generator-tag": "2.0.0",
+    "hexo-renderer-ejs": "2.0.0",
+    "hexo-renderer-marked": "7.0.1",
+    "hexo-renderer-stylus": "3.0.1",
+    "hexo-server": "3.0.0",
+    "hexo-theme-particlex": "2.8.1"
+  },
+  "devDependencies": {
+    "hexo-cli": "^4.3.2"
+  }
+}
