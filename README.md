@@ -30,6 +30,33 @@ You can write the post title, date, category, tags, and Markdown body there.
 Click `保存草稿` to save a Markdown file under `source/_posts`.
 Click `发布上线` to commit the source branch and deploy the generated site.
 
+Categories can be clicked or typed. Tags support comma-separated input, for
+example:
+
+```text
+电影, WALL·E, 自由生活
+```
+
+## Edit Or Delete Posts
+
+All posts live in:
+
+```text
+source/_posts/
+```
+
+To edit an old post, edit the matching `.md` file, then run:
+
+```bash
+npm run publish
+```
+
+To delete a post, delete its `.md` file from `source/_posts/`, then run:
+
+```bash
+npm run publish
+```
+
 ## Preview The Blog
 
 In another terminal:
