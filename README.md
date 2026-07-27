@@ -41,6 +41,8 @@ Click `保存草稿` to save a Markdown file under `source/_posts`.
 Click `发布上线` to commit the source branch and deploy the generated site.
 The editor also keeps a browser autosave draft, so refreshing the page restores
 what was in the form. Use `清空当前草稿` when you want to start over.
+Saved Markdown files appear in `草稿箱`; click `打开` to load one back into the
+editor.
 
 Categories can be clicked or typed. Tags support comma-separated input, for
 example:

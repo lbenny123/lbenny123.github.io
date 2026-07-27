@@ -70,25 +70,41 @@ async function uniquePostPath(date, title) {
   return filePath;
 }
 
+function cleanYamlValue(value = "") {
+  return String(value).trim().replace(/^["']|["']$/g, "");
+}
+
 function parseFrontmatter(content) {
   const match = content.match(/^---\n([\s\S]*?)\n---/);
   if (!match) return {};
   const front = match[1];
-  const categories = front
-    .match(/^categories:\s*(.+)$/m)?.[1]
-    ?.trim()
-    .replace(/^["']|["']$/g, "");
+  const title = cleanYamlValue(front.match(/^title:\s*(.+)$/m)?.[1] || "");
+  const subtitle = cleanYamlValue(front.match(/^subtitle:\s*(.+)$/m)?.[1] || "");
+  const date = cleanYamlValue(front.match(/^date:\s*(.+)$/m)?.[1] || "").slice(0, 10);
+  const categories = cleanYamlValue(front.match(/^categories:\s*(.+)$/m)?.[1] || "");
   const inlineTags = front.match(/^tags:\s*\[(.*?)\]\s*$/m)?.[1];
   const blockTags = [...front.matchAll(/^\s*-\s*(.+)$/gm)].map((item) =>
-    item[1].replace(/^["']|["']$/g, "").trim(),
+    cleanYamlValue(item[1]),
   );
   const tags = inlineTags
     ? inlineTags
         .split(",")
-        .map((tag) => tag.trim().replace(/^["']|["']$/g, ""))
+        .map((tag) => cleanYamlValue(tag))
         .filter(Boolean)
     : blockTags;
-  return { categories, tags };
+  return { title, subtitle, date, categories, tags };
+}
+
+function stripFrontmatter(content) {
+  return content.replace(/^---\n[\s\S]*?\n---\n?/, "");
+}
+
+function safePostPath(file) {
+  const filePath = path.resolve(root, file);
+  if (!filePath.startsWith(postsDir + path.sep) || !filePath.endsWith(".md")) {
+    throw new Error("文章路径不在 source/_posts。");
+  }
+  return filePath;
 }
 
 async function readOptions() {
@@ -104,6 +120,46 @@ async function readOptions() {
   return {
     categories: [...categories].sort(),
     tags: [...tags].sort((a, b) => a.localeCompare(b, "zh-CN")),
+  };
+}
+
+async function readPosts() {
+  await fs.mkdir(postsDir, { recursive: true });
+  const files = (await fs.readdir(postsDir)).filter((file) => file.endsWith(".md"));
+  const posts = await Promise.all(
+    files.map(async (file) => {
+      const filePath = path.join(postsDir, file);
+      const [stats, content] = await Promise.all([
+        fs.stat(filePath),
+        fs.readFile(filePath, "utf8"),
+      ]);
+      const front = parseFrontmatter(content);
+      return {
+        file: path.relative(root, filePath),
+        title: front.title || file.replace(/\.md$/, ""),
+        subtitle: front.subtitle || "",
+        date: front.date || "",
+        category: front.categories || "",
+        tags: front.tags || [],
+        mtime: stats.mtime.toISOString(),
+      };
+    }),
+  );
+  return posts.sort((a, b) => b.mtime.localeCompare(a.mtime));
+}
+
+async function readPost(file) {
+  const filePath = safePostPath(file);
+  const content = await fs.readFile(filePath, "utf8");
+  const front = parseFrontmatter(content);
+  return {
+    file: path.relative(root, filePath),
+    title: front.title || "",
+    subtitle: front.subtitle || "",
+    date: front.date || today(),
+    category: front.categories || "thought-corner",
+    tags: (front.tags || []).join(", "),
+    content: stripFrontmatter(content).trim(),
   };
 }
 
@@ -138,8 +194,7 @@ async function savePost(payload) {
 
   let filePath;
   if (payload.file) {
-    filePath = path.resolve(root, payload.file);
-    if (!filePath.startsWith(postsDir + path.sep)) throw new Error("文章路径不在 source/_posts。");
+    filePath = safePostPath(payload.file);
   } else {
     filePath = await uniquePostPath(date, title);
   }
@@ -196,6 +251,10 @@ function htmlPage() {
     .grid { display: grid; grid-template-columns: 1fr 180px; gap: 14px; }
     .panel { background: rgba(255,255,255,.78); border: 1px solid #e3e8f0; border-radius: 8px; padding: 18px; }
     .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .draft-list { display: grid; gap: 8px; margin-top: 10px; }
+    .draft-item { align-items: center; border: 1px solid #e3e8f0; border-radius: 8px; display: grid; gap: 8px; grid-template-columns: 1fr auto; padding: 10px 12px; }
+    .draft-title { font-weight: 700; }
+    .draft-meta { color: #697383; font-size: 13px; margin-top: 3px; }
     button, .chip { border: 1px solid #d8dee9; border-radius: 999px; background: #fff; color: #244e7a; cursor: pointer; font: inherit; font-weight: 700; }
     button { min-height: 40px; padding: 0 16px; }
     button.primary { background: #1f2633; border-color: #1f2633; color: white; }
@@ -216,6 +275,14 @@ function htmlPage() {
       </div>
       <button id="reload" type="button">刷新选项</button>
     </header>
+    <section class="panel">
+      <label>草稿箱</label>
+      <div class="actions">
+        <button id="reload-posts" type="button">刷新草稿箱</button>
+      </div>
+      <div id="posts" class="draft-list"></div>
+      <p class="hint">这里列出已经点过“保存草稿”的 Markdown 文件。点击“打开”就能继续编辑。</p>
+    </section>
     <section class="panel">
       <div class="grid">
         <div>
@@ -295,6 +362,52 @@ function htmlPage() {
     function setTags(tags) {
       $("tags").value = [...new Set(tags.map((tag) => tag.trim()).filter(Boolean))].join(", ");
     }
+    function fillForm(post) {
+      currentFile = post.file || "";
+      $("title").value = post.title || "";
+      $("subtitle").value = post.subtitle || "";
+      $("date").value = post.date || new Date().toISOString().slice(0, 10);
+      $("category").value = post.category || "thought-corner";
+      $("tags").value = post.tags || "";
+      $("content").value = post.content || "";
+      saveBrowserDraft();
+      setStatus("已打开：" + currentFile);
+    }
+    async function loadPost(file) {
+      if (!confirm("打开草稿会覆盖当前页面里的内容。已保存的 Markdown 文件不会丢。确认打开？")) return;
+      const res = await fetch("/api/post?file=" + encodeURIComponent(file));
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "打开失败");
+      fillForm(data);
+    }
+    async function loadPosts() {
+      const res = await fetch("/api/posts");
+      const posts = await res.json();
+      if (!res.ok) throw new Error(posts.error || "读取草稿箱失败");
+      $("posts").replaceChildren();
+      if (!posts.length) {
+        $("posts").textContent = "还没有保存过的草稿。";
+        return;
+      }
+      for (const post of posts) {
+        const item = document.createElement("div");
+        item.className = "draft-item";
+        const text = document.createElement("div");
+        const title = document.createElement("div");
+        title.className = "draft-title";
+        title.textContent = post.title;
+        const meta = document.createElement("div");
+        meta.className = "draft-meta";
+        meta.textContent = [post.date, post.category, post.tags.map((tag) => "#" + tag).join(" ")].filter(Boolean).join(" · ");
+        text.append(title, meta);
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = "打开";
+        button.addEventListener("click", () => loadPost(post.file).catch((error) => setStatus(error.message)));
+        item.append(text, button);
+        $("posts").append(item);
+      }
+    }
     async function loadOptions() {
       const res = await fetch("/api/options");
       const data = await res.json();
@@ -311,6 +424,7 @@ function htmlPage() {
       saveBrowserDraft();
       setStatus("已保存：" + data.file);
       await loadOptions();
+      await loadPosts();
       return data;
     }
     $("categories").addEventListener("click", (event) => {
@@ -329,6 +443,7 @@ function htmlPage() {
     });
     for (const id of fieldIds) $(id).addEventListener("input", saveBrowserDraft);
     $("reload").addEventListener("click", loadOptions);
+    $("reload-posts").addEventListener("click", () => loadPosts().catch((error) => setStatus(error.message)));
     $("clear").addEventListener("click", () => {
       if (!confirm("确认清空当前页面里的草稿？已经保存成 Markdown 的文件不会被删除。")) return;
       currentFile = "";
@@ -368,6 +483,7 @@ function htmlPage() {
     });
     restoreBrowserDraft();
     loadOptions().catch((error) => setStatus(error.message));
+    loadPosts().catch((error) => setStatus(error.message));
   </script>
 </body>
 </html>`;
@@ -382,6 +498,14 @@ const server = http.createServer(async (req, res) => {
     }
     if (req.method === "GET" && url.pathname === "/api/options") {
       send(res, 200, await readOptions());
+      return;
+    }
+    if (req.method === "GET" && url.pathname === "/api/posts") {
+      send(res, 200, await readPosts());
+      return;
+    }
+    if (req.method === "GET" && url.pathname === "/api/post") {
+      send(res, 200, await readPost(url.searchParams.get("file") || ""));
       return;
     }
     if (req.method === "POST" && url.pathname === "/api/save") {
