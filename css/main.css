@@ -474,6 +474,13 @@
     margin-top: 100px;
     padding: 20px;
 }
+.article .subtitle {
+    color: #5c6b72;
+    font-size: 17px;
+    line-height: 1.8;
+    margin-top: 12px;
+    text-align: center;
+}
 .article .content {
     margin: 50px 0;
 }
