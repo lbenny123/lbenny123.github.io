@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>艾迪芬奇的记忆——当死亡不再只是死因，而成为每个人最后的世界 | nini&#39;s Magical Journey</title>
+    <meta name="author" content="nini" />
+    <meta name="description" content="Becoming is not my concern. Leaving traces—that’s enough." />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>NINI&#39;S MAGICAL JOURNEY</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/categories/thought-corner/">
+            <i class="fa-solid fa-lightbulb fa-fw"></i>
+            <span>&ensp;Thought Corner</span>
+        </a>
+        
+        <a href="/categories/tech-notes/">
+            <i class="fa-solid fa-code fa-fw"></i>
+            <span>&ensp;Tech Notes</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;NINI&#39;S MAGICAL JOURNEY</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+                <a href="/categories/thought-corner/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-lightbulb fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Thought Corner</div>
+                    </div>
+                </a>
+                
+                <a href="/categories/tech-notes/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-code fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tech Notes</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>艾迪芬奇的记忆——当死亡不再只是死因，而成为每个人最后的世界</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/7/27
+        </span>
+        
+        <span class="category">
+            <a href="/categories/thought-corner/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                thought-corner
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/%E6%B8%B8%E6%88%8F/" style="color: #03a9f4">
+                    游戏
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>把《艾迪芬奇的记忆》玩完了，在结尾的时候最大的感受是遗憾它怎么这么短。我原本以为自己可以慢慢玩很久，每天抽一点时间，在那栋房子里慢慢探索，慢慢弄清楚出到底这个家族被什么诅咒着，具体每个人的死因到底是什么，结果两三天就结束了，而最开始萦绕在心头的问题，最后也没有给出一个具体的答案，但于我而言，这也足够了。<br>      对我来说，这部游戏最震撼的地方，是它并没有简单地讲“这些人是怎么死的”。如果只说死因，Finch 家族的故事可能会变成一串事故记录：溺水、风暴、意外、精神崩溃、工厂事故。但游戏真正厉害的地方，是它没有把死亡拍成一个冷冰冰的事实，而是用很抽象、很主观、也很有艺术感的方式，表现每个人死亡前后那个只属于自己的世界，其中一些无比巧妙的抽象，实在是让我大开眼界，叹为观止。<br>         比如 Gregory 的故事。现实里那可能是一个非常残酷的婴儿溺水事故，但游戏没有直接展示死亡本身，而是让玩具活过来，让青蛙在浴缸里跳跃和游动。明明我知道这一切最终通向死亡，可在体验的时候，它呈现出来的却是童真、梦境和流动的想象。<br>Gus 的故事也是这样。风暴中的危险，被表现成风筝的飞行。那些桌子、椅子、帐篷，本来是灾难里可怕的东西，却在他的段落里变成了被风筝牵引起来的画面。它让我感觉很奇妙：死亡明明是残酷的，但游戏呈现它的方式却可以如此美、如此轻、如此像一个人的内心世界。<br>       Lewis 那一段是最让我感到精妙的地方了。游戏里对他精神状态的表现方式，让我感觉自己不是在理解 Lewis，而是在短暂地成为 Lewis。我玩的时候一边用右手进行机械、重复的切鱼操作，一边用左手操纵他在他想象出的王国畅游，帮他选择每个想象的方向。这个设计太具体了。它不是让我站在外面理解“他在幻想”，而是让我短暂代入那种状态：身体还在重复劳动，意识却已经走进了另一个越来越庞大的世界，这种代入和成为，是我在之前的游戏中从未体验过的。<br>      除了这些死亡段落，真正让我沉进去的，还有那栋房子本身。我很喜欢在 Finch 家的老宅里探索。每进入一个人的房间，或者一个人的生活区域，我都能看到很多很日常的东西：书、计划表、罐头、桌上的食物、没有收拾完的物件。它们不像普通游戏里单纯的场景装饰，而像是一个人曾经生活过的证据，每一个人生活过的地方都留下了独属于他的物品和痕迹，让我恍惚间觉得他们似乎还在这儿<br>        人已经不在了，可东西还在。桌上的东西甚至像刚刚被用过，只是主人暂时离开了一会儿。但我又知道，他们其实已经去世很久了。于是这些生活化的场景就变得很有力量：它们一边让我觉得这个人离我很近，一边又提醒我这个人已经永远缺席。<br>        死亡通常会把一个人变成结论，变成一句“他是怎么死的”。但房间、日记、旧物和没收拾完的日常，会把一个人重新还原成过程。它们让我感觉到：他们不是只在故事里承担一个死因，他们曾经真的生活过，有过自己的习惯、幻想、关系和日常。<br>        我也很喜欢游戏里的引导方式。那些文字不是普通字幕，而是浮现在空间里的女主自述。有时候它们像路标一样出现在我该走的方向，有时候又像散落的记忆一样附在某个物体上，等我靠近才显现。于是整个探索过程不像是在单纯看剧情，而像是在一栋房子里读一篇立体的日记。<br>       它没有太多复杂操作，也没有很难的谜题，但这反而让体验变得很顺畅。我既不会因为卡关从情绪里跳出来，也不会觉得自己只是在看一段动画。它给了我足够的参与感，又没有让玩法盖过情绪本身，对于我这种手残党而言，这是第一部让我觉得无论是剧情还是操作都恰到好处的游戏。<br>        到最后，我其实并没有完全理解 Finch 家族每个人的死，也没有完全弄清楚所谓的家族诅咒到底是什么。但这好像并不妨碍它打动我。因为我最在意的，可能本来就不是一个清楚的答案。我记住的是那些房间，那些日记，那些奇妙又残酷的死亡表现。它们让我感觉到，每个人的离开都不只是一个事故，也不只是一个结论。死亡背后还有他们看见世界的方式，还有他们的想象、孤独、童真、逃避和生活过的痕迹。所以《艾迪芬奇的记忆》带给我的最大感受是：它不是在告诉我这些人如何结束，而是在让我感受到他们曾经怎样存在。他们不是只留下了死因。<br>他们留下了房间、物件、故事和最后的世界。那些东西安静地留在那里，像是在替他们继续证明：他们真的活过。<br>       以及后续看解析，似乎每一个家族成员的生存时代和死因，都对应着那个时代的美国。不过由于本人对美国的历史没有多么深的了解和钻研，在这方面并没有那么大的感触，但这也可以成为一个作品的巧思吧</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2026 nini&#39;s Magical Journey
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;nini
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
