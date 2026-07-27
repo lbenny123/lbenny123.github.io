@@ -1,4 +1,4 @@
-# nini's Magical Journey
+# benny's Magic journey
 
 This branch stores the Hexo source for the blog.
 
