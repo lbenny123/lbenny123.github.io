@@ -11,12 +11,22 @@ https://lbenny123.github.io/
 ## First Setup
 
 ```bash
+cd /Users/luobeini/lbenny123.github.io
 npm install
 ```
 
 ## Write In The Local Web Editor
 
+Double-click this file in Finder:
+
+```text
+启动博客写作页.command
+```
+
+Or run:
+
 ```bash
+cd /Users/luobeini/lbenny123.github.io
 npm run admin
 ```
 
@@ -62,6 +72,7 @@ npm run publish
 In another terminal:
 
 ```bash
+cd /Users/luobeini/lbenny123.github.io
 npm run preview
 ```
 
@@ -74,6 +85,7 @@ http://localhost:4000/
 ## Manual Publish
 
 ```bash
+cd /Users/luobeini/lbenny123.github.io
 npm run publish
 ```
 
