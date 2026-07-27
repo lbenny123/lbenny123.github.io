@@ -44,6 +44,17 @@ function yamlString(value) {
   return JSON.stringify(String(value ?? ""));
 }
 
+function normalizeContent(value) {
+  let inFence = false;
+  return String(value || "")
+    .split("\n")
+    .map((line) => {
+      if (/^\s*(```|~~~)/.test(line)) inFence = !inFence;
+      return inFence ? line : line.replace(/^(?: {4,}|\t+)/, "");
+    })
+    .join("\n");
+}
+
 async function readJson(req) {
   let raw = "";
   for await (const chunk of req) raw += chunk;
@@ -190,7 +201,7 @@ async function savePost(payload) {
     .split(",")
     .map((tag) => tag.trim())
     .filter(Boolean);
-  const content = String(payload.content || "");
+  const content = normalizeContent(payload.content);
 
   let filePath;
   if (payload.file) {
@@ -308,7 +319,7 @@ function htmlPage() {
       <div id="tag-buttons" class="chips"></div>
 
       <label for="content">正文 Markdown</label>
-      <textarea id="content" placeholder="从这里开始写。Markdown、中文段落、图片链接都可以。"></textarea>
+      <textarea id="content" placeholder="从这里开始写。段落之间空一行，不用在段首打空格；网页会自动首行缩进。Markdown、中文段落、图片链接都可以。"></textarea>
 
       <div class="actions">
         <button id="save" type="button">保存草稿</button>
