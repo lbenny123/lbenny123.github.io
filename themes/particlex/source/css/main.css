@@ -304,7 +304,7 @@
 }
 #home-posts .post .description .content {
     color: #263538;
-    font-family: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+    font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
     font-size: 16px;
     line-height: 2;
 }
@@ -489,16 +489,24 @@
 .article > div:first-child {
     text-align: center;
 }
+.article h1 {
+    color: #273b44;
+    font-family: "Lexend", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-weight: 800;
+    line-height: 1.45;
+}
 .article .subtitle {
     color: #5c6b72;
+    font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
     font-size: 18px;
+    font-weight: 600;
     line-height: 1.9;
     margin-top: 12px;
     text-align: center;
 }
 .article .content {
     color: #233;
-    font-family: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+    font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
     line-height: 2.15;
     margin: 50px 0;
 }
@@ -1013,7 +1021,7 @@ ol li {
     max-width: 780px !important;
 }
 .article .content {
-    font-family: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+    font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
     font-size: 17px;
     line-height: 2.15;
 }
@@ -1023,7 +1031,7 @@ ol li {
     text-indent: 2em !important;
 }
 #home-posts .post .description .content > p {
-    font-family: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+    font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
     line-height: 2;
     text-indent: 2em !important;
 }
