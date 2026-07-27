@@ -1008,3 +1008,22 @@ ol li {
         padding-left: 20px;
     }
 }
+
+.article {
+    max-width: 780px !important;
+}
+.article .content {
+    font-family: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+    font-size: 17px;
+    line-height: 2.15;
+}
+.article .content > p {
+    font-weight: 400;
+    margin: 1.25em 0;
+    text-indent: 2em !important;
+}
+#home-posts .post .description .content > p {
+    font-family: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+    line-height: 2;
+    text-indent: 2em !important;
+}
