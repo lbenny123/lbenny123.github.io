@@ -302,6 +302,17 @@
 #home-posts .post .post-tags a {
     font-size: 14px;
 }
+#home-posts .post .description .content {
+    color: #263538;
+    font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 16px;
+    line-height: 2;
+}
+#home-posts .post .description .content p {
+    font-weight: 400;
+    margin: 0.8em 0;
+    text-indent: 2em;
+}
 #home-posts .post .post-tags,
 #archives .info,
 .article .info {
@@ -469,28 +480,40 @@
     word-wrap: break-word;
 }
 .article {
-    font-size: 16px;
+    font-size: 17px;
     margin: auto;
     margin-top: 100px;
-    max-width: 860px;
+    max-width: 780px;
     padding: 20px;
+}
+.article > div:first-child {
+    text-align: center;
+}
+.article h1 {
+    color: #273b44;
+    font-family: "Lexend", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-weight: 800;
+    line-height: 1.45;
 }
 .article .subtitle {
     color: #5c6b72;
-    font-size: 17px;
-    line-height: 1.8;
+    font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.9;
     margin-top: 12px;
     text-align: center;
 }
 .article .content {
     color: #233;
-    line-height: 2.05;
+    font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 2.15;
     margin: 50px 0;
 }
 .article .content p {
     font-weight: 400;
     letter-spacing: 0;
-    margin: 1.1em 0;
+    margin: 1.25em 0;
     text-indent: 2em;
 }
 .article .content blockquote p,
@@ -992,4 +1015,23 @@ ol li {
     ol {
         padding-left: 20px;
     }
+}
+
+.article {
+    max-width: 780px !important;
+}
+.article .content {
+    font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 17px;
+    line-height: 2.15;
+}
+.article .content > p {
+    font-weight: 400;
+    margin: 1.25em 0;
+    text-indent: 2em !important;
+}
+#home-posts .post .description .content > p {
+    font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 2;
+    text-indent: 2em !important;
 }
