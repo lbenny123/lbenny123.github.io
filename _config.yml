@@ -66,4 +66,4 @@ deploy:
   type: git
   repo: https://github.com/lbenny123/lbenny123.github.io.git
   branch: master
-  message: "Site updated: {{ now('yyyy-mm-dd HH:MM:ss') }}"
+  message: "Site updated: {{ now('yyyy-MM-dd HH:mm:ss') }}"
