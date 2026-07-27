@@ -36,9 +36,11 @@ Open:
 http://127.0.0.1:4001/admin
 ```
 
-You can write the post title, date, category, tags, and Markdown body there.
+You can write the post title, subtitle, date, category, tags, and Markdown body there.
 Click `保存草稿` to save a Markdown file under `source/_posts`.
 Click `发布上线` to commit the source branch and deploy the generated site.
+The editor also keeps a browser autosave draft, so refreshing the page restores
+what was in the form. Use `清空当前草稿` when you want to start over.
 
 Categories can be clicked or typed. Tags support comma-separated input, for
 example:
@@ -54,6 +56,26 @@ All posts live in:
 ```text
 source/_posts/
 ```
+
+A normal post starts like this:
+
+```markdown
+---
+title: "主标题"
+subtitle: "副标题，可留空"
+date: 2026-07-27 20:30:00
+categories: thought-corner
+tags:
+  - 电影
+  - 自由生活
+---
+
+正文从这里开始写 Markdown。
+```
+
+Markdown is rendered by Hexo when you preview or publish the blog. The local
+web editor is only a writing box, so Markdown markers stay visible while you
+are typing.
 
 To edit an old post, edit the matching `.md` file, then run:
 

@@ -107,11 +107,12 @@ async function readOptions() {
   };
 }
 
-function renderMarkdown({ title, date, category, tags, content }) {
+function renderMarkdown({ title, subtitle, date, category, tags, content }) {
   const cleanTags = tags.map((tag) => tag.trim()).filter(Boolean);
   return [
     "---",
     `title: ${yamlString(title)}`,
+    ...(subtitle ? [`subtitle: ${yamlString(subtitle)}`] : []),
     `date: ${nowDateTime(date)}`,
     `categories: ${yamlString(category || "thought-corner")}`,
     "tags:",
@@ -126,6 +127,7 @@ function renderMarkdown({ title, date, category, tags, content }) {
 async function savePost(payload) {
   const title = String(payload.title || "").trim();
   if (!title) throw new Error("标题不能为空。");
+  const subtitle = String(payload.subtitle || "").trim();
   const date = String(payload.date || today()).slice(0, 10);
   const category = String(payload.category || "thought-corner").trim().replace(/_/g, "-");
   const tags = String(payload.tags || "")
@@ -143,7 +145,7 @@ async function savePost(payload) {
   }
 
   await fs.mkdir(postsDir, { recursive: true });
-  await fs.writeFile(filePath, renderMarkdown({ title, date, category, tags, content }));
+  await fs.writeFile(filePath, renderMarkdown({ title, subtitle, date, category, tags, content }));
   return path.relative(root, filePath);
 }
 
@@ -225,6 +227,9 @@ function htmlPage() {
           <input id="date" type="date">
         </div>
       </div>
+      <label for="subtitle">副标题</label>
+      <input id="subtitle" placeholder="可选，比如：当死亡不再只是死因，而成为每个人最后的世界">
+
       <label for="category">分类</label>
       <input id="category" list="category-list" value="thought-corner">
       <datalist id="category-list"></datalist>
@@ -241,16 +246,49 @@ function htmlPage() {
       <div class="actions">
         <button id="save" type="button">保存草稿</button>
         <button id="publish" class="primary" type="button">发布上线</button>
+        <button id="clear" type="button">清空当前草稿</button>
       </div>
       <div id="status"></div>
     </section>
   </main>
   <script>
     let currentFile = "";
+    const draftKey = "lbenny-blog-writer-draft";
+    const fieldIds = ["title", "subtitle", "date", "category", "tags", "content"];
     const $ = (id) => document.getElementById(id);
     $("date").value = new Date().toISOString().slice(0, 10);
 
     function setStatus(text) { $("status").textContent = text; }
+    function formPayload() {
+      return {
+        file: currentFile,
+        title: $("title").value,
+        subtitle: $("subtitle").value,
+        date: $("date").value,
+        category: $("category").value,
+        tags: $("tags").value,
+        content: $("content").value
+      };
+    }
+    function saveBrowserDraft() {
+      localStorage.setItem(draftKey, JSON.stringify(formPayload()));
+    }
+    function restoreBrowserDraft() {
+      const raw = localStorage.getItem(draftKey);
+      if (!raw) return;
+      let draft;
+      try {
+        draft = JSON.parse(raw);
+      } catch {
+        localStorage.removeItem(draftKey);
+        return;
+      }
+      currentFile = draft.file || "";
+      for (const id of fieldIds) {
+        if (draft[id] !== undefined) $(id).value = draft[id];
+      }
+      setStatus("已恢复浏览器暂存草稿。");
+    }
     function tagsArray() {
       return $("tags").value.split(",").map((tag) => tag.trim()).filter(Boolean);
     }
@@ -265,31 +303,41 @@ function htmlPage() {
       $("tag-buttons").innerHTML = data.tags.map((item) => '<button class="chip" type="button" data-tag="' + item + '">#' + item + '</button>').join("");
     }
     async function save() {
-      const payload = {
-        file: currentFile,
-        title: $("title").value,
-        date: $("date").value,
-        category: $("category").value,
-        tags: $("tags").value,
-        content: $("content").value
-      };
+      const payload = formPayload();
       const res = await fetch("/api/save", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload) });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "保存失败");
       currentFile = data.file;
+      saveBrowserDraft();
       setStatus("已保存：" + data.file);
       await loadOptions();
       return data;
     }
     $("categories").addEventListener("click", (event) => {
       const category = event.target.dataset.category;
-      if (category) $("category").value = category;
+      if (category) {
+        $("category").value = category;
+        saveBrowserDraft();
+      }
     });
     $("tag-buttons").addEventListener("click", (event) => {
       const tag = event.target.dataset.tag;
-      if (tag) setTags([...tagsArray(), tag]);
+      if (tag) {
+        setTags([...tagsArray(), tag]);
+        saveBrowserDraft();
+      }
     });
+    for (const id of fieldIds) $(id).addEventListener("input", saveBrowserDraft);
     $("reload").addEventListener("click", loadOptions);
+    $("clear").addEventListener("click", () => {
+      if (!confirm("确认清空当前页面里的草稿？已经保存成 Markdown 的文件不会被删除。")) return;
+      currentFile = "";
+      for (const id of fieldIds) $(id).value = "";
+      $("date").value = new Date().toISOString().slice(0, 10);
+      $("category").value = "thought-corner";
+      localStorage.removeItem(draftKey);
+      setStatus("已清空当前页面草稿。");
+    });
     $("save").addEventListener("click", async () => {
       try {
         $("save").disabled = true;
@@ -318,6 +366,7 @@ function htmlPage() {
         $("publish").disabled = false;
       }
     });
+    restoreBrowserDraft();
     loadOptions().catch((error) => setStatus(error.message));
   </script>
 </body>
