@@ -469,9 +469,10 @@
     word-wrap: break-word;
 }
 .article {
-    font-size: 15px;
+    font-size: 16px;
     margin: auto;
     margin-top: 100px;
+    max-width: 860px;
     padding: 20px;
 }
 .article .subtitle {
@@ -482,7 +483,19 @@
     text-align: center;
 }
 .article .content {
+    color: #233;
+    line-height: 2.05;
     margin: 50px 0;
+}
+.article .content p {
+    font-weight: 400;
+    letter-spacing: 0;
+    margin: 1.1em 0;
+    text-indent: 2em;
+}
+.article .content blockquote p,
+.article .content li p {
+    text-indent: 0;
 }
 .article .info .date {
     color: #5c6b72;
