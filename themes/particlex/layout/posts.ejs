@@ -48,7 +48,11 @@
             <% } else if (post.excerpt) { %>
             <%- post.excerpt %>
             <% } else { %>
-            <%- post.content %>
+            <%
+                const text = post.content.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+                const summary = text.length > 180 ? text.slice(0, 180) + "..." : text;
+            %>
+            <p><%= summary %></p>
             <% } %>
         </div>
     </div>

@@ -302,6 +302,17 @@
 #home-posts .post .post-tags a {
     font-size: 14px;
 }
+#home-posts .post .description .content {
+    color: #263538;
+    font-family: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+    font-size: 16px;
+    line-height: 2;
+}
+#home-posts .post .description .content p {
+    font-weight: 400;
+    margin: 0.8em 0;
+    text-indent: 2em;
+}
 #home-posts .post .post-tags,
 #archives .info,
 .article .info {
@@ -469,28 +480,32 @@
     word-wrap: break-word;
 }
 .article {
-    font-size: 16px;
+    font-size: 17px;
     margin: auto;
     margin-top: 100px;
-    max-width: 860px;
+    max-width: 780px;
     padding: 20px;
+}
+.article > div:first-child {
+    text-align: center;
 }
 .article .subtitle {
     color: #5c6b72;
-    font-size: 17px;
-    line-height: 1.8;
+    font-size: 18px;
+    line-height: 1.9;
     margin-top: 12px;
     text-align: center;
 }
 .article .content {
     color: #233;
-    line-height: 2.05;
+    font-family: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+    line-height: 2.15;
     margin: 50px 0;
 }
 .article .content p {
     font-weight: 400;
     letter-spacing: 0;
-    margin: 1.1em 0;
+    margin: 1.25em 0;
     text-indent: 2em;
 }
 .article .content blockquote p,
