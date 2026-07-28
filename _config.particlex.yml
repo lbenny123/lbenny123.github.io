@@ -73,7 +73,19 @@ crypto:
   enable: false
 
 giscus:
-  enable: false
+  enable: true
+  src: https://giscus.app/client.js
+  repo: lbenny123/lbenny123.github.io
+  repoID: R_kgDOO5T7bA
+  category: General
+  categoryID: DIC_kwDOO5T7bM4DCKgX
+  mapping: pathname
+  strict: 0
+  reactionsEnabled: 1
+  emitMetadata: 0
+  inputPosition: bottom
+  theme: preferred_color_scheme
+  lang: zh-CN
 
 gitalk:
   enable: false
