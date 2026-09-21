@@ -1,0 +1,20 @@
+.nav-folder-title[data-path="node_modules"],
+.nav-folder-title[data-path="public"],
+.nav-folder-title[data-path=".deploy_git"],
+.nav-folder-title[data-path=".github"],
+.nav-folder-title[data-path="themes"],
+.nav-folder-title[data-path="tools"],
+.nav-folder-title[data-path="scaffolds"] {
+  display: none;
+}
+
+.markdown-source-view.mod-cm6 .cm-content,
+.markdown-reading-view .markdown-preview-sizer {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.markdown-source-view.mod-cm6 .cm-line,
+.markdown-reading-view p {
+  line-height: 1.9;
+}

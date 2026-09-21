@@ -1,0 +1,16 @@
+{
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "source/images",
+  "newFileLocation": "folder",
+  "newFileFolderPath": "source/_drafts",
+  "showInlineTitle": true,
+  "userIgnoreFilters": [
+    "node_modules/",
+    "public/",
+    ".deploy_git/",
+    ".github/",
+    "themes/",
+    "tools/",
+    "scaffolds/"
+  ]
+}

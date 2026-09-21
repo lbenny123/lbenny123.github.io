@@ -8,6 +8,23 @@ The live site is published from the `master` branch:
 https://lbenny123.github.io/
 ```
 
+## Write And Publish With Obsidian
+
+Open this repository as an Obsidian vault:
+
+```text
+/Users/luobeini/lbenny123.github.io
+```
+
+New notes are created in `source/_drafts`, which stays local and is ignored by
+Git. Insert the `博客文章` template with `Command + Shift + T`.
+
+To publish, move the finished note into `source/_posts`, then press
+`Command + Shift + P`. Obsidian Git pushes the `source` branch, and GitHub
+Actions builds Hexo and deploys the generated site to `master`.
+
+To withdraw a post, move it back to `source/_drafts` and sync again.
+
 ## First Setup
 
 ```bash

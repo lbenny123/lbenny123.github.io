@@ -6,3 +6,8 @@ db.json
 debug.log
 npm-debug.log*
 .DS_Store
+source/_drafts/
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+.trash/
