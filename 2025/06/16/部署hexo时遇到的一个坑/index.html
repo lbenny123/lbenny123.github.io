@@ -1,229 +1,122 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="utf-8" />
-    <title>部署hexo时遇到的一个坑 | benny&#39;s Magic journey</title>
-    <meta name="author" content="benny" />
-    <meta name="description" content="Becoming is not my concern. Leaving traces—that’s enough." />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href="/images/avatar.jpg" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
-
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
-
-
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/css/main.css" />
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>部署hexo时遇到的一个坑 | benny&#39;s Magic journey</title>
+  <meta name="description" content="震惊！仅是字符间的一个小杠杠竟然花了一健全女大半天处理！ 被害人自述： 选好主题后我就乐呵呵去创建不同的category归档我的博文了，但没成想thought_corner这个分类一直无法显示，无论是config还是博文的开头的格式都没问题，weekly这类的都能正常显示，我ai都跑的冒火星子了也没发现哪里有问题，搞这">
+  <link rel="canonical" href="https://lbenny123.github.io/2025/06/16/%E9%83%A8%E7%BD%B2hexo%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="部署hexo时遇到的一个坑">
+  <meta property="og:description" content="震惊！仅是字符间的一个小杠杠竟然花了一健全女大半天处理！ 被害人自述： 选好主题后我就乐呵呵去创建不同的category归档我的博文了，但没成想thought_corner这个分类一直无法显示，无论是config还是博文的开头的格式都没问题，weekly这类的都能正常显示，我ai都跑的冒火星子了也没发现哪里有问题，搞这">
+  <meta property="og:url" content="https://lbenny123.github.io/2025/06/16/%E9%83%A8%E7%BD%B2hexo%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/">
+  <meta property="og:image" content="https://lbenny123.github.io/journey/images/collection-room.jpg">
+  <meta property="og:site_name" content="benny&#39;s Magic journey">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <link rel="icon" type="image/png" href="/journey/images/star-icon.png">
+  <link rel="stylesheet" href="/journey/style.css">
+  <script defer src="/journey/main.js"></script>
 <meta name="generator" content="Hexo 7.3.0"></head>
-<body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/">
-            <span>BENNY&#39;S MAGIC JOURNEY</span>
-        </a>
-        
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
-        
-        <a href="/categories/thought-corner/">
-            <i class="fa-solid fa-lightbulb fa-fw"></i>
-            <span>&ensp;Thought Corner</span>
-        </a>
-        
-        <a href="/categories/tech-notes/">
-            <i class="fa-solid fa-code fa-fw"></i>
-            <span>&ensp;Tech Notes</span>
-        </a>
-        
+<body class="inner-page">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header">
+    <a class="wordmark" href="/" aria-label="benny's Magic journey 首页">benny</a>
+    <nav aria-label="主导航">
+      <a href="/" >首页</a>
+      <a href="/journal/" aria-current="page">文章</a>
+      <a href="/about/" >关于我</a>
     </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;BENNY&#39;S MAGIC JOURNEY</span>
-        </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                    </div>
-                </a>
-                
-                <a href="/categories/thought-corner/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-lightbulb fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Thought Corner</div>
-                    </div>
-                </a>
-                
-                <a href="/categories/tech-notes/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-code fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tech Notes</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
-
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div class="article">
-    <div>
-        <h1>部署hexo时遇到的一个坑</h1>
-        
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/6/16
-        </span>
-        
-        <span class="category">
-            <a href="/categories/tech-notes/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                tech-notes
-            </a>
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            
-            <span class="tag">
-                
-                <a href="/tags/hexo/" style="color: #ffa2c4">
-                    hexo
-                </a>
-            </span>
-            
-        </span>
-        
-    </div>
+    <a class="icon-button header-search" href="/journal/#search" aria-label="搜索文章" title="搜索文章"><span class="icon" aria-hidden="true" style="--icon: url('/journey/icons/search.svg')"></span>
+</a>
     
-    <div class="content" v-pre>
-        <h3 id="震惊！仅是字符间的一个小杠杠竟然花了一健全女大半天处理！">震惊！仅是字符间的一个小杠杠竟然花了一健全女大半天处理！</h3><p><strong>被害人自述：</strong> 选好主题后我就乐呵呵去创建不同的category归档我的博文了，但没成想thought_corner这个分类一直无法显示，无论是config还是博文的开头的格式都没问题，weekly这类的都能正常显示，我ai都跑的冒火星子了也没发现哪里有问题，搞这玩意比我从0开始搞这个hexo博客花的时间还更长！！！</p>
+<details class="star-mail">
+  <summary class="companion-button" aria-label="打开小星星的来信" title="小星星的来信" aria-controls="star-letter">
+    <img src="/journey/images/star-spirit.png" alt="" width="80" height="80">
+    <span class="companion-label" aria-hidden="true">来信</span>
+  </summary>
+  <section class="star-letter" id="star-letter" aria-label="小星星的来信">
+    <div class="letter-top"><span>小星星的来信</span><button type="button" class="icon-button letter-close" aria-label="收起来信" title="收起来信"><img class="letter-control-icon" src="/journey/icons/x.svg" width="19" height="19" alt=""></button></div>
+    <div class="letter-pages" aria-live="polite" aria-atomic="true">
+      
+      <article class="letter-page" >
+        <h2>给路过这里的你</h2>
+        <p class="letter-text">有些东西被留下，不是因为它们有用，而是因为某一刻，我们真的喜欢。一个小物件、一段旋律、一句游戏里的话，都可以在这里占有位置。</p>
+        
+        <p class="letter-credit">小星星来信 · 原创</p>
+      </article>
+      
+      <article class="letter-page" hidden>
+        <h2>清醒地热爱</h2>
+        <p class="letter-text">世界上只有一种英雄主义：看清世界本来的样子，仍然爱它。</p>
+        <p class="letter-original" lang="fr">Il n’y a qu’un héroïsme au monde : c’est de voir le monde tel qu’il est, et de l’aimer.</p>
+        <p class="letter-credit"><a href="https://fr.wikisource.org/wiki/Vie_de_Michel-Ange/Avant-Propos" target="_blank" rel="noopener noreferrer" title="查看引用出处（新窗口）">罗曼·罗兰《米开朗琪罗传》序言 · 自译，原文标点简化</a></p>
+      </article>
+      
+      <article class="letter-page" hidden>
+        <h2>让日常值得被看见</h2>
+        <p class="letter-text">留心生活，为之惊叹，然后把它讲出来。</p>
+        <p class="letter-original" lang="en">Pay attention. Be astonished. Tell about it.</p>
+        <p class="letter-credit"><a href="https://niemanstoryboard.org/2018/09/05/pay-attention-be-astonished-tell-about-it/" target="_blank" rel="noopener noreferrer" title="查看引用出处（新窗口）">Mary Oliver · Sometimes（节选，自译）</a></p>
+      </article>
+      
+      <article class="letter-page" hidden>
+        <h2>一栋房子里的时间</h2>
+        <p class="letter-text">故事结束以后，桌上的杯子、读到一半的书，还替生活保留着形状。比起一个人如何离开，我更想知道，她曾怎样度过一个普通的下午。</p>
+        
+        <p class="letter-credit">小星星来信 · 原创，写给《艾迪芬奇》的余韵</p>
+      </article>
+      
+      <article class="letter-page" hidden>
+        <h2>允许未完成</h2>
+        <p class="letter-text">今天写下的想法，不必替明天的自己作保证。记录不是把自己钉在某个答案上，而是留下思考曾经走过的路。</p>
+        
+        <p class="letter-credit">小星星来信 · 原创</p>
+      </article>
+      
+      <article class="letter-page" hidden>
+        <h2>那些没有用的小事</h2>
+        <p class="letter-text">《WALL·E》里让我惦记的，不只是遥远的未来，还有被小心收起的旧物。也许生活的分量，就藏在那些不能折算成效率的喜欢里。</p>
+        
+        <p class="letter-credit">小星星来信 · 原创，写给《WALL·E》的余韵</p>
+      </article>
+      
+      <article class="letter-page" hidden>
+        <h2>窗外与桌前</h2>
+        <p class="letter-text">看星星的时候，不必急着知道每一颗的名字。读一个故事的时候，也不必马上说清它的意义。先让自己被触动，理解可以慢一点。</p>
+        
+        <p class="letter-credit">小星星来信 · 原创</p>
+      </article>
+      
+      <article class="letter-page" hidden>
+        <h2>留下一点真实</h2>
+        <p class="letter-text">这里不只收晴天。困惑、犹豫，以及暂时说不出名字的感受，也都是世界经过我们时留下的纹路。</p>
+        
+        <p class="letter-credit">小星星来信 · 原创</p>
+      </article>
+      
+    </div>
+    <div class="letter-controls"><button type="button" class="icon-button letter-prev" aria-label="上一封来信" title="上一封来信"><img class="letter-control-icon" src="/journey/icons/arrow-left.svg" width="19" height="19" alt=""></button><span class="letter-count" aria-live="polite">1 / 8</span><button type="button" class="icon-button letter-next" aria-label="下一封来信" title="下一封来信"><img class="letter-control-icon" src="/journey/icons/arrow-left.svg" width="19" height="19" alt=""></button></div>
+  </section>
+</details>
+
+  </header>
+  <main id="main">
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+<article class="article-shell">
+  <header class="article-heading">
+    <a class="back-link" href="/journal/"><span class="icon" aria-hidden="true" style="--icon: url('/journey/icons/arrow-left.svg')"></span>
+回到文章</a>
+    <div class="post-meta"><time datetime="2025-06-16">2025.06.16</time><span>·</span><a href="/categories/tech-notes/">折腾与创造</a></div>
+    <h1>部署hexo时遇到的一个坑</h1>
+    
+    <div class="post-tags"><a href="/tags/hexo/"># hexo</a></div>
+  </header>
+  
+  <div class="article-reading">
+    <aside class="reading-aside"><details class="article-toc" open><summary>这一篇里</summary><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%87%E6%83%8A%EF%BC%81%E4%BB%85%E6%98%AF%E5%AD%97%E7%AC%A6%E9%97%B4%E7%9A%84%E4%B8%80%E4%B8%AA%E5%B0%8F%E6%9D%A0%E6%9D%A0%E7%AB%9F%E7%84%B6%E8%8A%B1%E4%BA%86%E4%B8%80%E5%81%A5%E5%85%A8%E5%A5%B3%E5%A4%A7%E5%8D%8A%E5%A4%A9%E5%A4%84%E7%90%86%EF%BC%81"><span class="toc-text">震惊！仅是字符间的一个小杠杠竟然花了一健全女大半天处理！</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9C%8Bgemini%E7%9A%84%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="toc-text">看gemini的描述：</span></a></li></ol></li></ol></li></ol></details><a href="#comments" class="text-link">留下回声</a></aside>
+    <div class="article-body"><h3 id="震惊！仅是字符间的一个小杠杠竟然花了一健全女大半天处理！">震惊！仅是字符间的一个小杠杠竟然花了一健全女大半天处理！</h3><p><strong>被害人自述：</strong> 选好主题后我就乐呵呵去创建不同的category归档我的博文了，但没成想thought_corner这个分类一直无法显示，无论是config还是博文的开头的格式都没问题，weekly这类的都能正常显示，我ai都跑的冒火星子了也没发现哪里有问题，搞这玩意比我从0开始搞这个hexo博客花的时间还更长！！！</p>
 <p><strong>案情分析:</strong>  config和各种文件的结构设置确实没有问题，就是theme的config显示的link我找到后发现thougt_corner变成 thought-corner ,  不对劲!</p>
 <p><strong>调查结果：</strong>hexo会自动把”_“转换成”-“,  这还涉及一个高端大气上档次的名词—— “Slug化”  ( slugify )</p>
 <hr>
@@ -238,72 +131,21 @@
 <p><strong>为什么要把 <code>_</code> 换成 <code>-</code>？</strong> 因为业界普遍认为，在 URL 中使用<strong>连字符 <code>-</code></strong> 作为单词分隔符（例如 <code>thought-corner</code>），比使用<strong>下划线 <code>_</code></strong>（例如 <code>thought_corner</code>）更有利于搜索引擎优化（SEO），并且可读性更好。所以，这是很多网站框架（包括 Hexo）的一个默认的最佳实践。</p>
 <hr>
 <p>好的，又学到新东西辽</p>
-
-    </div>
-    
-    
-    
-    
-    <div id="comment">
-        <div id="giscus-container" class="giscus"></div>
-    </div>
-    
-    
-    
-    
 </div>
-
-            <footer id="footer">
-    <div id="footer-wrap">
-        <div>
-            &copy;
-            2022 - 2026 benny&#39;s Magic journey
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;benny
-        </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
-        
-    </div>
-</footer>
-
-        </div>
-        
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-        </transition>
-        
-    </div>
-    <script src="/js/main.js"></script>
+  </div>
+  <div class="article-after"><p class="end-mark" aria-label="文章结束">· · ·</p><nav class="post-neighbors" aria-label="前后篇文章"><a href="/2026/07/27/%E8%89%BE%E8%BF%AA%E8%8A%AC%E5%A5%87%E7%9A%84%E8%AE%B0%E5%BF%86-%E5%BD%93%E6%AD%BB%E4%BA%A1%E4%B8%8D%E5%86%8D%E5%8F%AA%E6%98%AF%E6%AD%BB%E5%9B%A0-%E8%80%8C%E6%88%90%E4%B8%BA%E6%AF%8F%E4%B8%AA%E4%BA%BA%E6%9C%80%E5%90%8E%E7%9A%84%E4%B8%96%E7%95%8C/"><small>较新的记录</small><span>艾迪芬奇的记忆</span></a><a href="/2025/06/15/%E3%80%8AWALL%C2%B7E%E3%80%8B/"><small>再读一篇</small><span>《WALL·E》</span></a></nav>
+    <section id="comments" class="comments"><h2>留下回声</h2>
     
-    
-<script
-    src="https://giscus.app/client.js"
-    data-repo="lbenny123/lbenny123.github.io"
-    data-repo-id="R_kgDOO5T7bA"
-    data-category="General"
-    data-category-id="DIC_kwDOO5T7bM4DCKgX"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="bottom"
-    data-theme="preferred_color_scheme"
-    data-lang="zh-CN"
-    crossorigin
-    async
-></script>
-
-
-
-
-
-    
+      <script src="https://giscus.app/client.js" data-repo="lbenny123/lbenny123.github.io" data-repo-id="R_kgDOO5T7bA" data-category="General" data-category-id="DIC_kwDOO5T7bM4DCKgX" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async></script>
+    </section>
+  </div>
+</article>
+</main>
+  <footer class="site-footer">
+    <a href="/">benny's Magic journey</a>
+    <span>Leaving traces. Since 2025.</span>
+    <a href="#main" class="icon-button" aria-label="回到顶部" title="回到顶部"><span class="icon" aria-hidden="true" style="--icon: url('/journey/icons/arrow-up.svg')"></span>
+</a>
+  </footer>
 </body>
 </html>
